@@ -16,7 +16,7 @@ import Carts from './pages/carts/Carts'
 import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import Search from './pages/Search/Search'
-
+import '../src/assets/scss/styles.scss'
 
 //cấu hình history (chuyển hướng không cần hook navigate)
 export const history = createBrowserHistory({ window });

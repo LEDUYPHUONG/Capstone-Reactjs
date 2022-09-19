@@ -1,0 +1,27 @@
+.nav-link{
+    padding: 0 !important;
+    margin-right: 24px !important;
+}
+
+.HeaderHome-Container{
+    margin: 0  auto;
+    padding: 10px 20px;
+    .HeaderHome{
+        .HeaderHome-Header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+                .img{
+                    width: 116px;
+                    height: 32px;
+                }
+                
+                .Search-Carts-Login-Rigister{
+                    span{
+                        padding-left: 5px;
+                    }
+                }
+        }
+    }
+    
+}

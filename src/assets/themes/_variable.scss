@@ -1,1 +1,50 @@
 // biến,mixin,extend
+
+// color-text (component)
+    //(HeaderHome)
+$C-text-primary: #000000;
+$C-text-white: #FFFFFF;
+$C-text-samewhite: #F6F6F6;//login-register
+$C-text-gray: #CBC9C9;//(item product)
+
+    // (search)(login)
+$C-text-samegray: rgba(0, 0, 0, 0.6);//search
+$C-text-samesamegray: rgba(0, 0, 0, 0.6);//price
+$C-text-blue: #152AEB;//register now
+    // (profile)
+$C-text-samesamewhite: #FFFEFE;//profile
+$C-text-pink: #DD2AED;//profile
+$C-text-violet: #4200FF;//profile
+$C-text-pink-lineGradien: linear-gradient(#CB0DC3, #7D0DB1);//profile
+    //(detail)
+$C-text-red: #FB0B0B;//heart 
+$C-text-sizeShoe: #1ED90E;//heart 
+
+// font 
+    // size
+    // weight
+    // font-family
+
+// background
+    // headerHome
+$bg-header: #000000;
+$bg-body: #F5F5F5; //body, next-prev
+$bg-footer: #D9D9D9;
+$bg-button-buynow-carousel: #F8B653;//carousel 
+$bg-button-buynow-buy: #E1B067;//item-product
+$bg-button-buynow-price: #DEDDDC;//item-product 
+$bg-item-product: #F8F8F8;//item-product
+    //search
+$bg-input: rgba(33, 33, 33, 0.08);//input-search-price
+    // login
+$bg-button-login: #6200EE;//login
+$bg-button-login: #1877F2;//continue with FB#EB5757
+    // carts
+$bg-button-carts-delete: #EB5757;//delete 
+$bg-button-carts-submit: #F2994A;//submit oder
+    // detail
+$bg-button-addtocarts: linear-gradient(#3E20F8 90%, #D017EE 100%);//add to carts
+$bg-button-numbershoes: linear-gradient(#3E20F8 90%, #D017EE 100%);//add to carts
+
+
+
