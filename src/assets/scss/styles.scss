@@ -1,8 +1,18 @@
+// themes
+@import "./themes/variable";
 // base
 @import "./base/base";
 // component
-@import "../scss/components/HeaderHome";
-@import "../scss/components/FooterHome";
+@import "./components/headerHome";
+@import "./components/footerHome";
 // pages
+@import "./pages/carts";
+@import "./pages/detail";
+@import "./pages/index";
+@import "./pages/login";
+@import "./pages/profile";
+@import "./pages/register";
+@import "./pages/search";
+// index-carousel
+@import "./themes/vadiationCarousel";
 
-// themes

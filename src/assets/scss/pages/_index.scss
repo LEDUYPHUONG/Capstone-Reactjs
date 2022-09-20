@@ -1,0 +1,74 @@
+.index{
+    height: 1044px;
+    .container{
+        .carousel{
+            .carousel-indicators{
+                button{
+                    @include button-1
+                    ($width: 15px,
+                    $height: 15px,
+                    $backgr:$bg-white,
+                    $boder:1px solid rgba(0, 0, 0, 0.13),
+                    $br-radius:30px,
+                    $padding: 0,
+                    $margin:19px)
+                }
+                .active{
+                    background-color: rgba(0, 0, 0, 0.2);
+                    ;
+                }
+            }
+            // .carousel-inner{
+                
+            //     .carousel-item{
+            //         display: flex;
+            //         justify-content: center;
+            //         align-items: center; 
+            //         img{
+            //             width: 689px;
+            //         height: 383px;
+            //         overflow: hidden;
+            //         }
+            //         .carousel-caption{
+            //             height: 152px;
+            //             width: 291px;
+            //             h5{
+
+            //             }
+            //             p{
+
+            //             }
+            //             .button-carousel{
+            //                 button{
+
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+            .carousel-control-prev{
+                .carousel-control-prev-icon{
+
+                }
+                .visually-hidden{
+
+                }
+            }
+            .carousel-control-next{
+                .carousel-control-next-icon{
+
+                }
+                .visually-hidden{
+
+                }
+            }
+        }
+    }
+    .index-ProductFeature-title{
+        margin-left: 24px;
+        margin-bottom: 0;
+    }
+    // .index-renderProduct{
+
+    // }
+}
