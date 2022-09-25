@@ -11,7 +11,7 @@ import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
 
 import Index from './pages/Index/Index'
 import Detail from './pages/Detail/Detail'
-// import Login from './pages/Login/Login'
+import Login from './pages/Login/Login'
 import Carts from './pages/carts/Carts'
 import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
@@ -31,7 +31,7 @@ root.render(
             <Route path='detail'>
               <Route path=':id' element={<Detail/>}></Route>
             </Route>
-            {/* <Route path='login' element={<Login />}></Route> */}
+            <Route path='login' element={<Login />}></Route>
             <Route path='profile' element={<Profile />}></Route>
             <Route path='carts' element={<Carts />}></Route>
             <Route path='register' element={<Register />}></Route>

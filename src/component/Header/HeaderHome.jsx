@@ -5,7 +5,7 @@ export default function HeaderHome() {
       <div className='HeaderHome-Container'>
         <div className="HeaderHome">
           <div className="HeaderHome-Header">
-            <img src="/img/logo-CyberSoft.png" alt="logo-CyberSoft" />
+            <a href="https://cybersoft.edu.vn/" target='_blank'><img src="/img/logo-CyberSoft.png" alt="logo-CyberSoft" /></a>
             <div className="Search-Carts-Login-Rigister">
               <span className='HeaderHome-Search'>
                 <img src="./img/iconSearch.png" alt="iconSearch" />

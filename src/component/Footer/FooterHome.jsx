@@ -38,7 +38,7 @@ export default function FooterHome() {
           </div>
       </div>
       <div className="footer-bottom">
-        <p className='creator'>© 2022 <a href='https://cybersoft.edu.vn'>Cybersoft</a> All Rights Reserved | Design Theme by <a href='https://cybersoft.edu.vn'>Trương Tấn Khải</a></p>
+        <p className='creator'>© 2022 <a href='https://cybersoft.edu.vn' target='_blank'>Cybersoft</a> All Rights Reserved | Design Theme by <a href='https://cybersoft.edu.vn' target='_blank'>Trương Tấn Khải</a></p>
       </div>
     </div>
   )

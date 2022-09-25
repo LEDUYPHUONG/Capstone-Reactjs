@@ -1,0 +1,24 @@
+.carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before{
+    margin: 0 5px;
+    display: inline-block;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    content: '';
+    
+}
+
+.carousel .control-prev.control-arrow:before {
+    border-right: 50px solid $bg-next-prev-carousel;
+}
+
+.carousel .control-next.control-arrow:before {
+    border-left: 50px solid $bg-next-prev-carousel;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+    background: $bg-white;
+}
+
+.carousel .carousel-status{
+    display: none;
+}

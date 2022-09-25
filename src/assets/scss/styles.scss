@@ -5,6 +5,9 @@
 // component
 @import "./components/headerHome";
 @import "./components/footerHome";
+// util
+@import "./util/itemProduct";
+@import "./util/carousel";
 // pages
 @import "./pages/carts";
 @import "./pages/detail";
@@ -13,6 +16,7 @@
 @import "./pages/profile";
 @import "./pages/register";
 @import "./pages/search";
-// index-carousel
-@import "./themes/vadiationCarousel";
+
+
+
 

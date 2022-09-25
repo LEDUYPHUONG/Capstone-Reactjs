@@ -23,23 +23,25 @@
                     justify-content: center;
                     align-items: center;
                     span{
+                        cursor: pointer;
                         margin-left: 5px;
                         @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-m,
                         $f-size:$f-size-ssm,$line-heig:19px,$t-align:start,$color:$C-text-white,$backgr-color:$bg-header);
                     }
                     .HeaderHome-NumberCarts{
-                        
+                      
                         @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-sm,
                         $f-size:$f-size-b,$line-heig:24.2px,$t-align:start,$color:$C-text-white,$backgr-color:$bg-header);
                     }
                     .HeaderHome-TextSearch{
-                        
+                       
                         @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-m,
                         $f-size:$f-size-ssb,$line-heig:36.31px,$t-align:start,$color:$C-text-white,$backgr-color:$bg-header);
                     }
                     .HeaderHome-Search{
                         width: 33px;
                         height: 32px;
+                        
                     }
                 }
         }

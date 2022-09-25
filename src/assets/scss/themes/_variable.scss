@@ -1,3 +1,4 @@
+
 // biến,mixin,extend
 
 // color-text (component)
@@ -42,6 +43,7 @@ $f-weight-ssb: 900;
     // font-family
 $f-family-primary: 'Inter';
 $f-family-Second: 'Roboto';
+
 // background
     // headerHome
 $bg-header: #000000;
@@ -52,6 +54,7 @@ $bg-button-buynow-carousel: #F8B653;//carousel
 $bg-button-buynow-buy: #E1B067;//item-product
 $bg-button-buynow-price: #DEDDDC;//item-product 
 $bg-item-product: #F8F8F8;//item-product
+$bg-next-prev-carousel: rgba(0, 0, 0, 0.24);
     //search
 $bg-input: rgba(33, 33, 33, 0.08);//input-search-price
     // login
@@ -65,7 +68,8 @@ $bg-button-addtocarts: linear-gradient(#3E20F8 90%, #D017EE 100%);//add to carts
 $bg-button-numbershoes: linear-gradient(#3E20F8 90%, #D017EE 100%);//add to carts
 
 @mixin text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-sm,
-$f-size:$f-size-sb,$line-heig:29px,$t-align:start,$color:$C-text-primary,$backgr-color:$bg-body) {
+$f-size:$f-size-sb,$line-heig:29px,$t-align:start,$color:$C-text-primary,
+$backgr-color:$bg-white) {
     font-family: $f-fam;
     font-style: $f-styt;
     font-weight: $f-wei;
@@ -89,8 +93,11 @@ $padding: 13px 35px,$margin:0px) {
 // button search: search, login fb, update profile, 
 // button register: submit
 @mixin button-2($width: 121px,$height: 48px,$backgr:$bg-button-login,$boder:none,$br-radius:50px,
-$padding: 16px 34px,$margin:0px
+$padding: 0,$margin:0px
 ,$box-shadow:(0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2))) {
+    @include text($f-fam:$f-family-Second,
+                        $f-wei:$f-weight-ssm,
+                        $f-size:$f-size-sm,$line-heig:16px,$t-align:center);
     width: $width ;
     height: $height;
     background-color: $backgr;
@@ -99,6 +106,8 @@ $padding: 16px 34px,$margin:0px
     padding: $padding;
     margin: $margin;
     box-shadow: $box-shadow;
+    color: $bg-white;
+    
 }
 // button login: facebook
 @mixin button-3($width: 442px,$height: 63px,$backgr:$bg-button-Fb,$boder:none,$br-radius:20.9968px,
@@ -112,6 +121,8 @@ $box-shadow:(0px 38.4869px 71.4756px rgba(0, 0, 0, 0.07))) {
     padding: $padding;
     margin: $margin;
     box-shadow: $box-shadow;
+    color: $bg-white;
+    font-size: $f-size-ssm;
 }
 // button carts: button carts(edit, delete,submit)
 @mixin button-4($width: 150px,$height: 50px,$backgr:$bg-button-carts-submit,$boder:none,$br-radius:4px,
