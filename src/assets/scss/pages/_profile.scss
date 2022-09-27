@@ -54,40 +54,8 @@
                             padding-left: 5px;
                             margin-bottom: 5px;
                         }
-                        .input-default{
-                            width: 443px;
-                            height: 54px;
-                            margin-right: 37px;
-                            position: relative;
-                            input{
-                                width: 100%;
-                                height: 100%;
-                                border: none;
-                                border-radius: 4px 4px 0px 0px;
-                                &::placeholder{
-                                    padding: 18px 14px;
-                                    @include text($f-fam:$f-family-Second
-                                    ,$f-wei:$f-weight-sm,$f-size:$f-size-ssm,$line-heig:24px,$backgr-color:$bg-input);
-                                }
-                                &:focus-visible{
-                                outline: none;
-                                }
-                            }
-                            .eye-input{
-                                position: absolute;
-                                top: 18px;
-                                right:18px;
-                                width: 22px;
-                                height: 16px;
-                                line-height: 15px;
-                                .eye-open{
-                                    display: block;
-                                }
-                                .eye-closed{
-                                    display: none;
-                                }
-                            }
-                        }
+                        // .input-default{
+                        // }
                         .span-danger{
                             height: 16px;
                             .text-err{
@@ -261,7 +229,7 @@
         .quantity-table{
             text-align: end;
             .prev-icon-table{
-                width: 40px;
+                width: 50px;
                 height: 40px;
                 @include text($f-size:$f-size-b,$line-heig:24px,$t-align:center);
                 background-color: $bg-footer;
@@ -273,7 +241,7 @@
                 }
             }
             .number-table{
-                width: 40px;
+                width: 50px;
                 height: 40px;
                 @include text($f-size:$f-size-b,$line-heig:24px,$t-align:center);
                 background-color: $bg-footer;
@@ -281,7 +249,7 @@
                 margin: 0 8px;
             }
             .next-icon-table{
-                width: 40px;
+                width: 50px;
                 height: 40px;
                 @include text($f-size:$f-size-b,$line-heig:24px,$t-align:center);
                 background-color: $bg-footer;

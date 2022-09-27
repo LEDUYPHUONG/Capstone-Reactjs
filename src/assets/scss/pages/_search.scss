@@ -13,6 +13,8 @@
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
+                // .input-default{
+                // }
                 .search-button{
                     width: 121px;
                     height: 48px;
@@ -48,18 +50,8 @@
                         @include text($f-fam:$f-family-Second,$f-styt:normal,$f-wei:$f-weight-ssm,
                         $f-size:$f-size-sssm,$line-heig:24px,);
                     }
-                    .input-default{
-                        .icon-decrease{
-                            position: absolute;
-                            top:0;
-                            right:5px;
-                            height: 54px;
-                            i{
-                                font-size: 45px;
-                                line-height: 54px; 
-                            }
-                        }
-                    }
+                    // .input-default{ 
+                    // }
                     .search-input-ascending{
                         margin-top: 5px;
                         .icon-ascending{

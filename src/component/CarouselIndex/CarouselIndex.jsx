@@ -6,7 +6,8 @@ export default () => (
     <Carousel
       autoPlay
       infiniteLoop
-      showArrows={true}     
+      showArrows={true}
+      showThumbs={false}    
     >
         <div className="index-carousel">
             <div className="index-carousel-inner">

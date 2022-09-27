@@ -1,0 +1,78 @@
+.detail{
+    .container{
+        .detail-product{
+            height: 530px;
+            .product-info{
+                margin: 0 auto;
+                .product-info-inner{
+                    height: 530px;
+                    width: 100%;
+                    padding: 58px 65px;
+                    .container{
+                        height: 530px;
+                        
+                        .product-img{
+                            width: 335px;
+                            height: 335px;
+                            
+                            background-color: $bg-item-product;
+                            .product-img-iner{
+                                img{
+                                    width: 100%;
+                                }
+                            }
+                        }
+                        .product-info{
+                            .product-name{
+                                margin-bottom: 10px;
+                                .product-name-text{
+                                    @include text(
+                                    $f-fam:$f-family-primary,
+                                    $f-styt:normal,
+                                    $f-wei:$f-weight-m,
+                                    $f-size:$f-size-sssb,
+                                    $line-heig:48px,
+                                    $t-align:start,
+                                    $color:$C-text-primary,
+                                    $backgr-color:$bg-white,  
+                                    );
+                                    margin-bottom: 0;
+                                }
+                            }
+                            .product-description{
+                                margin-bottom: 40px;
+                                .product-description-text{
+                                    @extend .product-name-text;
+                                font-weight: 300;
+                                font-size: 20px;
+                                line-height: 24px; 
+                                }
+                            }
+                            .button-info{
+                                @include button-1();
+                                font-weight: 300;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .title-realate-product{
+            @include text($f-wei:$f-weight-sm,
+            $f-size:$f-size-sssb,$line-heig:48px,$t-align:center);
+        }
+        .render-product-detail{
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+                margin: 49px auto;
+                padding: 0 -15px;
+                justify-content: space-between;
+                align-items: center;
+                // .item-product{
+                    
+                // }
+            }
+        }
+    }
+}

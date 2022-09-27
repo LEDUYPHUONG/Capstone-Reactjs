@@ -27,11 +27,11 @@ export default function Search() {
             <p className='search-price-title'>Price</p>
             <div className="input-default">
               <input type="text" placeholder='decrease'/>
-              <div className="icon-decrease"><i class="fa-solid fa-caret-down"></i></div>
+              <div className="icon-decrease"><i className="fa-solid fa-caret-down"></i></div>
             </div>
             <div className="input-default search-input-ascending">
               <input type="text" placeholder='ascending'/>
-              <div className="icon-ascending"><i class="fa-solid fa-caret-down"></i></div>
+              <div className="icon-ascending"><i className="fa-solid fa-caret-down"></i></div>
             </div>
           </div>
           <div className="render-product-search">
