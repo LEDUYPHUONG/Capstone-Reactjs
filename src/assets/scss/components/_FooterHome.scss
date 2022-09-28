@@ -10,13 +10,13 @@
                 .col-4{
                     .footer-title{
                         @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-b,
-                        $f-size:$f-size-b,$line-heig:24px,$t-align:start,$color:$C-text-primary,$backgr-color:$bg-white);
+                        $f-size:$f-size-b,$line-heig:24px,$color:$C-text-primary,$backgr-color:$bg-white);
                     }
                     ul{
                         li{
                             margin-top: 6px;
                             @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-sssm,
-                        $f-size:$f-size-ssm,$line-heig:19px,$t-align:start,$color:$C-text-primary,$backgr-color:$bg-white);
+                        $f-size:$f-size-ssm,$line-heig:19px,$color:$C-text-primary,$backgr-color:$bg-white);
                         }
                     }
                 }

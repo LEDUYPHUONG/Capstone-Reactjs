@@ -1,7 +1,17 @@
-import { combineReducers, createStore } from "redux";
+import {configureStore} from '@reduxjs/toolkit'
+import drawerReducer from './reducers/drawerReducer';
+import facebookReducer from './reducers/facebookReducer';
+import numberReducer from './reducers/numberReducer';
+import productReducer from './reducers/productReducer';
+import userReducer from './reducers/userReducer';
 
-const rootReduce = combineReducers({
-    // reducer: reducer,
-})
 
-export const store = createStore(rootReduce, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+export const store = configureStore({
+    reducer: {
+        number: numberReducer,
+        facebookReducer: facebookReducer,
+        productReducer: productReducer,
+        userReducer: userReducer,
+        drawerReducer: drawerReducer,
+    }
+});

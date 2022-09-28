@@ -68,14 +68,13 @@ $bg-button-addtocarts: linear-gradient(#3E20F8 90%, #D017EE 100%);//add to carts
 $bg-button-numbershoes: linear-gradient(#3E20F8 90%, #D017EE 100%);//add to carts
 
 @mixin text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-sm,
-$f-size:$f-size-sb,$line-heig:29px,$t-align:start,$color:$C-text-primary,
+$f-size:$f-size-sb,$line-heig:29px,$color:$C-text-primary,
 $backgr-color:$bg-white) {
     font-family: $f-fam;
     font-style: $f-styt;
     font-weight: $f-wei;
     font-size: $f-size;
     line-height: $line-heig;
-    text-align: $t-align;
     color: $color;
     background-color: $backgr-color;
 }
@@ -97,7 +96,7 @@ $padding: 0,$margin:0px
 ,$box-shadow:(0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2))) {
     @include text($f-fam:$f-family-Second,
                         $f-wei:$f-weight-ssm,
-                        $f-size:$f-size-sm,$line-heig:16px,$t-align:center);
+                        $f-size:$f-size-sm,$line-heig:16px);
     width: $width ;
     height: $height;
     background-color: $backgr;

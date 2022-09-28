@@ -20,7 +20,7 @@
                             $f-wei:$f-weight-m,
                             $f-size:$f-size-sssb,
                             $line-heig:48px,
-                            $t-align:start,
+                         
                             $color:$C-text-primary,
                             $backgr-color:$bg-white,
                             
@@ -35,7 +35,7 @@
                         @extend .product-name-text;
                         font-weight: 300;
                         font-size: 20px;
-                        line-height: 24px;   
+                        line-height: 24px; 
                     }
                 }
                 .button-carousel{

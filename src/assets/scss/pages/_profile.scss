@@ -29,7 +29,7 @@
         padding: 26px 34px 13px 34px;
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        
         .profile-avata{
             width: 225px;
             height: 225px;
@@ -215,7 +215,8 @@
                             button{
                                 width: 80px;
                                 height: 34px;
-                                @include text($f-size:$f-size-b,$line-heig:24px,$t-align:center);
+                                @include text($f-size:$f-size-b,$line-heig:24px);
+                                text-align: center;
                                 background-color: $bg-footer;
                                 border: none;
                                 
@@ -231,7 +232,8 @@
             .prev-icon-table{
                 width: 50px;
                 height: 40px;
-                @include text($f-size:$f-size-b,$line-heig:24px,$t-align:center);
+                @include text($f-size:$f-size-b,$line-heig:24px);
+                text-align: center;
                 background-color: $bg-footer;
                 border: none;
                 margin: 0 8px;
@@ -243,7 +245,8 @@
             .number-table{
                 width: 50px;
                 height: 40px;
-                @include text($f-size:$f-size-b,$line-heig:24px,$t-align:center);
+                @include text($f-size:$f-size-b,$line-heig:24px);
+                text-align: center;
                 background-color: $bg-footer;
                 border: none;
                 margin: 0 8px;
@@ -251,7 +254,8 @@
             .next-icon-table{
                 width: 50px;
                 height: 40px;
-                @include text($f-size:$f-size-b,$line-heig:24px,$t-align:center);
+                @include text($f-size:$f-size-b,$line-heig:24px);
+                text-align: center;
                 background-color: $bg-footer;
                 border: none;
                 margin: 0 8px;

@@ -8,7 +8,7 @@
             padding-top: 60px;
             margin-bottom: 42px;
             .carts-title-text{
-                @include text($f-size:$f-size-sssb,$line-heig:48px,$backgr-color:$bg-body);
+                @include text($f-size:$f-size-sssb,$line-heig:48px,$backgr-color:$bg-white);
             }
         }
         .horizontal-line{
@@ -70,7 +70,8 @@
                             button{
                                 width: 80px;
                                 height: 34px;
-                                @include text($f-size:$f-size-b,$line-heig:24px,$t-align:center);
+                                @include text($f-size:$f-size-b,$line-heig:24px);
+                                text-align: center;
                                 background-color: $bg-footer;
                                 border: none;
                             }
@@ -83,6 +84,7 @@
                             }
                         }
                         .action-button{
+                            text-align: end;
                             .btnEdit{
                                 @include button-4(
                                 $width: 80px,$height: 36px,$padding:0,
