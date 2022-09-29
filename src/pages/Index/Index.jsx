@@ -10,6 +10,8 @@ import { getProductApi } from "../../redux/reducers/productReducer";
 
 export default function Index() {
   const {arrProduct} = useSelector(state => state.productReducer);
+  const arrProductCarousel = arrProduct.filter(prod => prod.id <= 3)
+  console.log(arrProductCarousel);
   const dispatch = useDispatch();
   useEffect(() => {
     const actionApi = getProductApi();
@@ -19,14 +21,13 @@ export default function Index() {
     return arrProduct.map((prod,index) => {
       return <div className="item-product" key={index}>
                 <Product product={prod}/>
-              </div>
-              
+              </div>   
     })
   }
  
   return (
     <>
-      <CarouselIndex />
+      <CarouselIndex arrProductCarousel={arrProductCarousel}/>
       <div className="index-product-feature">
         <div className="product-feature-img">
           <div className="product-feature-img-out">

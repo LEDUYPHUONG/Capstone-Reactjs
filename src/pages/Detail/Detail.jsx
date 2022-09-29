@@ -7,7 +7,7 @@ export default function Detail() {
         <div className="detail-product">
           <div className="product-info">
               <div className="product-info-inner">
-                <div className="container d-flex justify-content-between align-items-center">
+                <div className="container d-flex justify-content-between">
                   <div className="product-img">
                       <div className="product-img-iner">
                           <img src="./img/Giay.png" alt="..." />
@@ -18,9 +18,26 @@ export default function Detail() {
                           <p className="product-name-text">Product name</p>
                       </div>
                       <div className="product-description">
-                          <div className="product-description-text">Product description </div>
+                          <div className="product-description-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores pariatur sequi esse ducimus veritatis aspernatur totam inventore, tempore rem impedit illum qui a quae aperiam officiis, error repellat sunt nulla! ( Thuộc tính Description) </div>
+                          <div className="available-size">
+                            <div className="available-size-text">Available size</div>
+                            <div className="button-size">
+                              <button className='btn btn-primary'>38</button>
+                              <button className='btn btn-primary'>39</button>
+                              <button className='btn btn-primary'>40</button>
+                              <button className='btn btn-primary'>41</button>
+                              <button className='btn btn-primary'>42</button>
+
+                            </div>
+                            <div className="price">85$</div>
+                            <div className="quantity">
+                              <button className='btn btn-primary btnUp'>42</button>
+                              <span className='number-shoes'>1</span>
+                              <button className='btn btn-primary btnDown'>-</button>
+                            </div>
+                            <button className="btn btnAddToCarts">Add to carts</button>
+                          </div>
                       </div>
-                      <button className="btn btn-primary button-info">Buy now</button>
                   </div>
                 </div>
             </div>

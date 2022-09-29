@@ -20,7 +20,9 @@ $C-text-pink-lineGradien: linear-gradient(#CB0DC3, #7D0DB1);//profile
     //(detail)
 $C-text-red: #FB0B0B;//heart 
 $C-text-sizeShoe: #1ED90E;//heart 
-
+$C-text-numbersize: #1E1D1D;
+$C-text-price: #FC0303;
+$C-text-addtocarts: #FFF8F8;
 // font 
     // size 12, 14, 16, 18, 20, 24, 30, 32,  40
 $f-size-m: 12px;
@@ -30,7 +32,7 @@ $f-size-sssm: 18px;
 $f-size-b: 20px;
 $f-size-sb: 24px;
 $f-size-ssb: 30px;
-$f-size-ssb: 32px;
+// $f-size-ssb: 32px;
 $f-size-sssb: 40px;
     // weight
 $f-weight-m: 300;
@@ -64,8 +66,9 @@ $bg-button-Fb: #1877F2;//continue with FB#EB5757
 $bg-button-carts-delete: #EB5757;//delete 
 $bg-button-carts-submit: #F2994A;//submit oder
     // detail
-$bg-button-addtocarts: linear-gradient(#3E20F8 90%, #D017EE 100%);//add to carts
-$bg-button-numbershoes: linear-gradient(#3E20F8 90%, #D017EE 100%);//add to carts
+$bg-button-addtocarts:  linear-gradient(270deg, rgba(62, 32, 248, 0.9) 5.14%, #D017EE 89.71%);//add to carts
+$bg-button-numbershoes: linear-gradient(180deg, #6181F3 0%, #7C97F5 99.48%);;//add to carts
+$bg-button-sizeshoes: #CCCCCC;
 
 @mixin text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-sm,
 $f-size:$f-size-sb,$line-heig:29px,$color:$C-text-primary,

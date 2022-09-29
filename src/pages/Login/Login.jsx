@@ -35,7 +35,7 @@ export default function Login(props) {
             <div className="form-item">
               <p className="form-item-title">Email</p>
               <div className="form-group input-default">
-                <input className="form-control" type="text" placeholder="email" id="email" name="email" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
+                <input type="text" placeholder="email" id="email" name="email" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
                 {frm.errors.email ? <span className="text-danger">{frm.errors.email}</span>: ''}
               </div>
               <div className="span-danger">
@@ -46,7 +46,7 @@ export default function Login(props) {
             <div className="form-item">
               <p className="form-item-title">Password</p>
               <div className="form-group input-default">
-                <input type="password" placeholder="password"  className="form-control" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
+                <input type="password" placeholder="password" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
                 <div className="eye-input">
                   <div className="eye-open">
                     <i className="fa-solid fa-eye"></i>

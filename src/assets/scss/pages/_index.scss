@@ -3,14 +3,26 @@
         height: 530px;
         width: 100%;
         .container{
-            // .carousel-img{
-            //     .carousel-img-iner{
-            //         img{
-                        
-            //         }
-            //     }
-            // }
+            height: 530px;
+            width: 100%;
+            margin: 0 auto;
+            
+            .carousel-img{
+                .carousel-img-iner{
+                    width: 689px;
+                    height: 383px;
+                    overflow: hidden;
+                    img{
+                       width: 100%;
+                       height: 100%;
+                    }
+                }
+            }
             .carousel-info{
+                display: flex;
+                flex-wrap: wrap;
+                text-align: start;
+                padding-left: 139px;
                 .product-name{
                     margin-bottom: 10px;
                     .product-name-text{
