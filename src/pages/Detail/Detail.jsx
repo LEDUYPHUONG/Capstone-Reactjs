@@ -1,6 +1,55 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
+import { getProductDetailApi } from "../../redux/reducers/productReducer";
+
 
 export default function Detail() {
+  const {productDetail} = useSelector (state => state.productReducer)
+  console.log(productDetail);
+  const dispatch = useDispatch();
+  const params = useParams()
+
+  useEffect(() => {
+    let {id} = params;
+    dispatch(getProductDetailApi(id));
+},[params.id]);
+  
+  const renderSizeShoe = () => {
+    return productDetail.size?.map((sizeNumber,index) => {
+      return <button className='btn btn-primary' key={index}>{sizeNumber}</button>
+    })
+  }
+
+  const renderRealateShoes = () => {
+    return productDetail.relatedProducts?.map((prod,index) => {
+      return <div className="item-product" key={index}>
+      <div className="item-product-inner">
+        <div className="product-img">
+          <img src={prod.image} alt="..." />
+        </div>
+        <div className="product-name">
+          <p className="name">{prod.name}</p>
+        </div>
+        <div className="product-description">
+          <p className="description">{prod.shortDescription}</p>
+        </div>
+        <div className="icon-heart">
+          <img src="./img/heart.png" alt="..." />
+        </div>
+        <div className="buton-buynow-price">
+          <div className="button-buynow">
+            <button><NavLink to={`/detail/${prod.id}`}>Buy now</NavLink></button>
+          </div>
+          <div className="button-price">
+            <button>{prod.price}$</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    })
+  }
+
   return (
     <div className="detail">
       <div className="container">
@@ -10,28 +59,23 @@ export default function Detail() {
                 <div className="container d-flex justify-content-between">
                   <div className="product-img">
                       <div className="product-img-iner">
-                          <img src="./img/Giay.png" alt="..." />
+                          <img src={productDetail.image} alt="..." />
                       </div>
                   </div>
                   <div className="product-info">
                       <div className="product-name">
-                          <p className="product-name-text">Product name</p>
+                          <p className="product-name-text">{productDetail.name}</p>
                       </div>
                       <div className="product-description">
-                          <div className="product-description-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores pariatur sequi esse ducimus veritatis aspernatur totam inventore, tempore rem impedit illum qui a quae aperiam officiis, error repellat sunt nulla! ( Thuộc tính Description) </div>
+                          <div className="product-description-text">{productDetail.description}</div>
                           <div className="available-size">
                             <div className="available-size-text">Available size</div>
                             <div className="button-size">
-                              <button className='btn btn-primary'>38</button>
-                              <button className='btn btn-primary'>39</button>
-                              <button className='btn btn-primary'>40</button>
-                              <button className='btn btn-primary'>41</button>
-                              <button className='btn btn-primary'>42</button>
-
+                              {renderSizeShoe()}
                             </div>
-                            <div className="price">85$</div>
+                            <div className="price">{productDetail.price}$</div>
                             <div className="quantity">
-                              <button className='btn btn-primary btnUp'>42</button>
+                              <button className='btn btn-primary btnUp'>+</button>
                               <span className='number-shoes'>1</span>
                               <button className='btn btn-primary btnDown'>-</button>
                             </div>
@@ -46,150 +90,7 @@ export default function Detail() {
         <p className='title-realate-product'>-Realate Product -</p>
         <div className="render-product-detail">
           <div className="container">
-            <div className="item-product">
-              <div className="item-product-inner">
-                <div className="product-img">
-                  <img src="./img/Giay.png" alt="..." />
-                </div>
-                <div className="product-name">
-                  <p className="name">Adidas Prophere</p>
-                </div>
-                <div className="product-description">
-                  <p className="description">short descript</p>
-                </div>
-                <div className="icon-heart">
-                  <img src="./img/heart.png" alt="..." />
-                </div>
-                <div className="buton-buynow-price">
-                  <div className="button-buynow">
-                    <button>Buy now</button>
-                  </div>
-                  <div className="button-price">
-                    <button>85$</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item-product">
-              <div className="item-product-inner">
-                <div className="product-img">
-                  <img src="./img/Giay.png" alt="..." />
-                </div>
-                <div className="product-name">
-                  <p className="name">Adidas Prophere</p>
-                </div>
-                <div className="product-description">
-                  <p className="description">short descript</p>
-                </div>
-                <div className="icon-heart">
-                  <img src="./img/heart.png" alt="..." />
-                </div>
-                <div className="buton-buynow-price">
-                  <div className="button-buynow">
-                    <button>Buy now</button>
-                  </div>
-                  <div className="button-price">
-                    <button>85$</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item-product">
-              <div className="item-product-inner">
-                <div className="product-img">
-                  <img src="./img/Giay.png" alt="..." />
-                </div>
-                <div className="product-name">
-                  <p className="name">Adidas Prophere</p>
-                </div>
-                <div className="product-description">
-                  <p className="description">short descript</p>
-                </div>
-                <div className="icon-heart">
-                  <img src="./img/heart.png" alt="..." />
-                </div>
-                <div className="buton-buynow-price">
-                  <div className="button-buynow">
-                    <button>Buy now</button>
-                  </div>
-                  <div className="button-price">
-                    <button>85$</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item-product">
-              <div className="item-product-inner">
-                <div className="product-img">
-                  <img src="./img/Giay.png" alt="..." />
-                </div>
-                <div className="product-name">
-                  <p className="name">Adidas Prophere</p>
-                </div>
-                <div className="product-description">
-                  <p className="description">short descript</p>
-                </div>
-                <div className="icon-heart">
-                  <img src="./img/heart.png" alt="..." />
-                </div>
-                <div className="buton-buynow-price">
-                  <div className="button-buynow">
-                    <button>Buy now</button>
-                  </div>
-                  <div className="button-price">
-                    <button>85$</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item-product">
-              <div className="item-product-inner">
-                <div className="product-img">
-                  <img src="./img/Giay.png" alt="..." />
-                </div>
-                <div className="product-name">
-                  <p className="name">Adidas Prophere</p>
-                </div>
-                <div className="product-description">
-                  <p className="description">short descript</p>
-                </div>
-                <div className="icon-heart">
-                  <img src="./img/heart.png" alt="..." />
-                </div>
-                <div className="buton-buynow-price">
-                  <div className="button-buynow">
-                    <button>Buy now</button>
-                  </div>
-                  <div className="button-price">
-                    <button>85$</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item-product">
-              <div className="item-product-inner">
-                <div className="product-img">
-                  <img src="./img/Giay.png" alt="..." />
-                </div>
-                <div className="product-name">
-                  <p className="name">Adidas Prophere</p>
-                </div>
-                <div className="product-description">
-                  <p className="description">short descript</p>
-                </div>
-                <div className="icon-heart">
-                  <img src="./img/heart.png" alt="..." />
-                </div>
-                <div className="buton-buynow-price">
-                  <div className="button-buynow">
-                    <button>Buy now</button>
-                  </div>
-                  <div className="button-price">
-                    <button>85$</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {renderRealateShoes()}
           </div>
         </div>
       </div>

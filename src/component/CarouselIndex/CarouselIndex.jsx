@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import { NavLink } from 'react-router-dom';
 
 
 export default function CarouselIndex({arrProductCarousel}) {
@@ -20,7 +21,9 @@ export default function CarouselIndex({arrProductCarousel}) {
                                     <div className="product-description">
                                         <div className="product-description-text">{prod.description} </div>
                                     </div>
-                                    <button className="btn btn-primary button-carousel">Buy now</button>
+                                    <button className="btn btn-primary button-carousel">
+                                     <NavLink to={`/detail/${prod.id}`}>Buy now</NavLink>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +34,7 @@ export default function CarouselIndex({arrProductCarousel}) {
     return (
         <>
             <Carousel
-            // autoPlay
+            autoPlay
             infiniteLoop
             showArrows={true}
             showThumbs={false}    

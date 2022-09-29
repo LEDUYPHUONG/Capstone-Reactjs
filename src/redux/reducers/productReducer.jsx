@@ -31,7 +31,7 @@ export const {getProductAction,getProductDetailAction} = productReducer.actions
 
 export default productReducer.reducer
 
-// ............action Api ....................
+// ............action Api (action thunk) ....................
 
 export const getProductApi =  () => {
     return async (dispatch) => {

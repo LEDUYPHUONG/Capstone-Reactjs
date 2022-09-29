@@ -8,15 +8,19 @@ import CarouselIndex from "../../component/CarouselIndex/CarouselIndex";
 import { getProductApi } from "../../redux/reducers/productReducer";
 
 
+
 export default function Index() {
   const {arrProduct} = useSelector(state => state.productReducer);
   const arrProductCarousel = arrProduct.filter(prod => prod.id <= 3)
-  console.log(arrProductCarousel);
+  
   const dispatch = useDispatch();
+
+
   useEffect(() => {
     const actionApi = getProductApi();
     dispatch(actionApi);
   },[])
+
   const renderProduct = () => {
     return arrProduct.map((prod,index) => {
       return <div className="item-product" key={index}>

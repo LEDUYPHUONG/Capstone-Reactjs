@@ -29,10 +29,9 @@ root.render(
         <Routes>
           <Route path='' element={<App />}>
             <Route index element={<Index />}></Route>
-            {/* <Route path='detail'>
+            <Route path='detail'>
               <Route path=':id' element={<Detail/>}></Route>
-            </Route> */}
-            <Route path='detail' element={<Detail />}></Route>
+            </Route>
             <Route path='login' element={<Login />}></Route>
             <Route path='profile' element={<Profile />}></Route>
             <Route path='carts' element={<Carts />}></Route>
