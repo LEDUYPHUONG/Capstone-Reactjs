@@ -22,31 +22,38 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    .HeaderHome-Register,.HeaderHome-Login,.HeaderHome-IconGiohang{
+                    .HeaderHome-IconGiohang{
                         cursor: pointer;
                         margin-left: 5px;
                         @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-m,
                         $f-size:$f-size-ssm,$line-heig:19px,$color:$C-text-white,$backgr-color:$bg-header);
+                        margin-left: 10px;
                     }
                     .HeaderHome-NumberCarts{
                       
-                        @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-sm,
-                        $f-size:$f-size-b,$line-heig:24.2px,$color:$C-text-white,$backgr-color:$bg-header);
+                        @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-m,
+                        $f-size:$f-size-ssm,$line-heig:19px,$color:$C-text-white,$backgr-color:$bg-header);
+                        margin-left: 10px;
                     }
+                    
                     .HeaderHome-TextSearch{
                        
                         @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-m,
                         $f-size:$f-size-ssb,$line-heig:36.31px,$color:$C-text-white,$backgr-color:$bg-header);
+                        margin-right: 10px;
                     }
                     .HeaderHome-Search{
                         width: 33px;
                         height: 32px;
                         color: $C-text-white;
+             
                         .iconSearch{
                             font-size: 32px;
                             line-height: 32px;
+                            
                         }
                     }
+                    
                 }
         }
     }

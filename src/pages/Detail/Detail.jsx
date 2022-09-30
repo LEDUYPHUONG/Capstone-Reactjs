@@ -37,7 +37,8 @@ export default function Detail() {
           <p className="description">{prod.shortDescription}</p>
         </div>
         <div className="icon-heart">
-          <img src="./img/heart.png" alt="..." />
+          <i className="fa-solid fa-heart"></i>
+          <i className="fa-regular fa-heart" style={{display:'none'}}></i>
         </div>
         <div className="buton-buynow-price">
           <div className="button-buynow">

@@ -61,7 +61,8 @@ export default function Search(props) {
           <p className="description">{item.shortDescription}</p>
         </div>
         <div className="icon-heart">
-          <img src="./img/heart.png" alt="..." />
+          <i className="fa-solid fa-heart"></i>
+          <i className="fa-regular fa-heart" style={{display:'none'}}></i>
         </div>
         <div className="buton-buynow-price">
           <div className="button-buynow">
