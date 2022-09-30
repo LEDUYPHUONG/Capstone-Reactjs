@@ -18,7 +18,7 @@ export default function HeaderHome() {
       return (
         <>
           <NavLink to="carts" className="HeaderHome-IconGiohang">
-              <i class="fa-solid fa-cart-shopping"></i>
+              <i className="fa-solid fa-cart-shopping"></i>
               ({quantityCarts})
           </NavLink>
           <NavLink to="profile" className="HeaderHome-NumberCarts">
@@ -33,6 +33,7 @@ export default function HeaderHome() {
     clearStore(USER_LOGIN);
     localStorage.clear();
     window.location.reload();
+  
   };
 //   const host = window.location.protocol + '//' + window.location.host
 // <img src={`${host}./img/iconSearch.png`} alt="iconSearch" />
@@ -58,7 +59,7 @@ export default function HeaderHome() {
               }}
                 onClick={() => logout()}
               >
-                Logout
+                <NavLink to='login'>Logout</NavLink>
               </button>
             )}
             </div>

@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ACCESS_TOKEN, getStoreJson, http, setCookie, setStore, setStoreJson, USER_LOGIN } from '../../util/tools';
+import { ACCESS_TOKEN, clearStore, getStoreJson, http, setCookie, setStore, setStoreJson, USER_LOGIN } from '../../util/tools';
 import { history } from '../../index';
 
 const initialState = {
     userLogin: getStoreJson(USER_LOGIN) // có thể null hoặc object
+    
 }
 
 const userReducer = createSlice({
@@ -14,6 +15,7 @@ const userReducer = createSlice({
         console.log(action);
         state.userLogin = action.payload;
     },
+
   }
 });
 
@@ -21,7 +23,7 @@ export const {getProfileAction} = userReducer.actions
 
 export default userReducer.reducer
 
-
+// login
 export const loginApi = (userLogin) => {//{email,password}
     return async (dispatch) => {
         try {
@@ -41,10 +43,8 @@ export const loginApi = (userLogin) => {//{email,password}
     }
     
 }
-
-export const getProfileApi = (
-    // accessToken = getStore(ACCESS_TOKEN)
-) => {
+// index
+export const getProfileApi = () => {
     return async dispatch => {
         try {
             const result = await http.post('/users/getProfile');
@@ -60,45 +60,53 @@ export const getProfileApi = (
         }
     }
 }
-
-
-export const updateProfileApi = (userLogin) => {//{email,password}
+// register
+export const createProfileApi = (formData) => {
+    return async () => {
+      try {
+        delete formData.passwordConfirm;
+        const response = await http.post('/users/signup', formData);
+        console.log(response);
+        if (response && response.data) {
+          alert(response.data.message);
+          history.push('/login');
+        }
+      } catch (err) {
+        console.log(err);
+        if (err.response.status === 400 && err.response.data) {
+          alert(err.response.data.message);
+        }
+      }
+    };
+};
+// profile
+export const updateProfileApi = (formData) => {//{email,password}
     return async (dispatch) => {
         try {
-            const result = await http.post('/users/updateProfile',userLogin)
-            //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
-            console.log(result);
-            // setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
-            // setStore(ACCESS_TOKEN,result.data.content.accessToken);
-            //chuyển hướng về profile, trang quên mật khẩu
-            // history.push('/profile')
+            const response = await http.post('/users/updateProfile',formData)
+            console.log(response);
+            if (response && response.data) {
+                alert(response.data.content);
+              }
 
-            // // sau khi đăng nhập thành công thì dispatch action getProfile
-            // dispatch(getProfileApi())
         } catch (err) {
-            // history.push('/home')
             console.log(err);
+            if (err.response.status === 400 && err.response.data) {
+                alert(err.response.data.content);
+              }
         }
     }
     
 }
-
-export const createProfileApi = (
-    // accessToken = getStore(ACCESS_TOKEN)
-) => {
+// carts
+export const getUserOderApi = () => {
     return async dispatch => {
         try {
-            const result = await http.post('/Users/signup');
-            console.log(result);
-            if(result){
-                history.push('/login')
-            }
-           
+            const response = await http.post('/users/order');
+            console.log(response);
         } catch (err) {
-            history.push('/home')
-            console.log(err);
+            
         }
     }
 }
-
 
