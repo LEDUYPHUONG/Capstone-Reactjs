@@ -14,14 +14,10 @@ const userReducer = createSlice({
         console.log(action);
         state.userLogin = action.payload;
     },
-    getCartsAction: (state,action) => {
-        console.log(action);
-        state.userLogin = action.payload;
-    },
   }
 });
 
-export const {getProfileAction,getCartsAction} = userReducer.actions
+export const {getProfileAction} = userReducer.actions
 
 export default userReducer.reducer
 
@@ -66,40 +62,43 @@ export const getProfileApi = (
 }
 
 
-// export const cartsApi = (userLogin) => {//{email,password}
-//     return async (dispatch) => {
-//         try {
-//             const result = await http.post('/users/signin',userLogin)
-//             //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
-//             // console.log(result);
-//             setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
-//             setStore(ACCESS_TOKEN,result.data.content.accessToken);
-//             //chuyển hướng về profile, trang quên mật khẩu
-//             history.push('/carts')
-//             // sau khi đăng nhập thành công thì dispatch action getProfile
-//             dispatch(getProfileApi())
-//         } catch (err) {
-//             history.push('/home')
-//             console.log(err);
-//         }
-//     }
+export const updateProfileApi = (userLogin) => {//{email,password}
+    return async (dispatch) => {
+        try {
+            const result = await http.post('/users/updateProfile',userLogin)
+            //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
+            console.log(result);
+            // setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
+            // setStore(ACCESS_TOKEN,result.data.content.accessToken);
+            //chuyển hướng về profile, trang quên mật khẩu
+            // history.push('/profile')
+
+            // // sau khi đăng nhập thành công thì dispatch action getProfile
+            // dispatch(getProfileApi())
+        } catch (err) {
+            // history.push('/home')
+            console.log(err);
+        }
+    }
     
-// }
+}
 
-// export const getCartsApi = (
-//     // accessToken = getStore(ACCESS_TOKEN)
-// ) => {
-//     return async dispatch => {
-//         try {
-//             const result = await http.post('/users/order');
-//             //lấy được thông tin profile => đưa lên redux
-//             const action = getProfileAction(result.data.content);
-//             dispatch(action);
+export const createProfileApi = (
+    // accessToken = getStore(ACCESS_TOKEN)
+) => {
+    return async dispatch => {
+        try {
+            const result = await http.post('/Users/signup');
+            console.log(result);
+            if(result){
+                history.push('/login')
+            }
+           
+        } catch (err) {
+            history.push('/home')
+            console.log(err);
+        }
+    }
+}
 
-//             //lưu vào storage 
-//             setStoreJson(USER_LOGIN,result.data.content)
-//         } catch (err) {
-            
-//         }
-//     }
-// }
+

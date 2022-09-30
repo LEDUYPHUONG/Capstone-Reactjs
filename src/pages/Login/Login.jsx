@@ -4,7 +4,8 @@ import * as Yup from 'yup'
 import { useDispatch } from "react-redux";
 import { loginApi } from "../../redux/reducers/userReducer";
 import { useState } from "react";
-
+import FacebookLogin from 'react-facebook-login';
+import axios from "axios";
 
 export default function Login(props) {
   const [showPassWord,setShowPassword] = useState('password')
@@ -27,6 +28,20 @@ export default function Login(props) {
         dispatch(loginApi(values))
       }
   })
+
+  const responseFacebook = (response) => {
+    axios({
+      url:"https://shop.cyberlearn.vn/api/Users/facebooklogin",
+      method: "POST",
+      data: {
+        facebookToken: response.accessToken
+      }
+    }).then(res => {
+      // lưu vào localStore
+      localStorage.setItem("accessToken", res.data.content.accessToken )
+    })
+  }
+
   return (
     <form className="login" onSubmit={frm.handleSubmit}>
       <div className="login-container">
@@ -40,7 +55,6 @@ export default function Login(props) {
               <p className="form-item-title">Email</p>
               <div className="form-group input-default">
                 <input type="text" placeholder="email" id="email" name="email" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
-                {frm.errors.email ? <span className="text-danger">{frm.errors.email}</span>: ''}
               </div>
               <div className="span-danger">
                 {frm.errors.email ? <span className="text-danger text-err">{frm.errors.email}</span>: ''}
@@ -78,11 +92,17 @@ export default function Login(props) {
           <span className="register-now-question">Register now ?</span>
           <button className="button-login" type="submit">LOGIN</button>
         </div>
-        <div className="login-with-facebook">
-          <button className="button-facebook">
+        <div className="login-with-facebook">     
+          <FacebookLogin
+            appId="1135304574089308"
+            autoLoad={true}
+            fields="name,email,picture"
+            callback={responseFacebook} />
+            {/* <button className="button-facebook">
             <i className="fa-brands fa-facebook"></i> Continue with Facebook
-          </button>
+          </button> */}
         </div>
+        
       </div>
     </form>
   );
