@@ -34,7 +34,7 @@ export default function CarouselIndex({arrProductCarousel}) {
     return (
         <>
             <Carousel
-            autoPlay
+            // autoPlay
             infiniteLoop
             showArrows={true}
             showThumbs={false}    

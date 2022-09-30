@@ -3,9 +3,7 @@ import { ACCESS_TOKEN, getStoreJson, http, setCookie, setStore, setStoreJson, US
 import { history } from '../../index';
 
 const initialState = {
-    userLogin: {
-        userLogin:getStoreJson(USER_LOGIN) // có thể null hoặc object
-    }
+    userLogin: getStoreJson(USER_LOGIN) // có thể null hoặc object
 }
 
 const userReducer = createSlice({
@@ -15,11 +13,15 @@ const userReducer = createSlice({
     getProfileAction: (state,action) => {
         console.log(action);
         state.userLogin = action.payload;
-    }
+    },
+    getCartsAction: (state,action) => {
+        console.log(action);
+        state.userLogin = action.payload;
+    },
   }
 });
 
-export const {getProfileAction} = userReducer.actions
+export const {getProfileAction,getCartsAction} = userReducer.actions
 
 export default userReducer.reducer
 
@@ -44,7 +46,6 @@ export const loginApi = (userLogin) => {//{email,password}
     
 }
 
-
 export const getProfileApi = (
     // accessToken = getStore(ACCESS_TOKEN)
 ) => {
@@ -53,6 +54,7 @@ export const getProfileApi = (
             const result = await http.post('/users/getProfile');
             //lấy được thông tin profile => đưa lên redux
             const action = getProfileAction(result.data.content);
+            console.log(action)
             dispatch(action);
 
             //lưu vào storage 
@@ -62,3 +64,42 @@ export const getProfileApi = (
         }
     }
 }
+
+
+// export const cartsApi = (userLogin) => {//{email,password}
+//     return async (dispatch) => {
+//         try {
+//             const result = await http.post('/users/signin',userLogin)
+//             //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
+//             // console.log(result);
+//             setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
+//             setStore(ACCESS_TOKEN,result.data.content.accessToken);
+//             //chuyển hướng về profile, trang quên mật khẩu
+//             history.push('/carts')
+//             // sau khi đăng nhập thành công thì dispatch action getProfile
+//             dispatch(getProfileApi())
+//         } catch (err) {
+//             history.push('/home')
+//             console.log(err);
+//         }
+//     }
+    
+// }
+
+// export const getCartsApi = (
+//     // accessToken = getStore(ACCESS_TOKEN)
+// ) => {
+//     return async dispatch => {
+//         try {
+//             const result = await http.post('/users/order');
+//             //lấy được thông tin profile => đưa lên redux
+//             const action = getProfileAction(result.data.content);
+//             dispatch(action);
+
+//             //lưu vào storage 
+//             setStoreJson(USER_LOGIN,result.data.content)
+//         } catch (err) {
+            
+//         }
+//     }
+// }

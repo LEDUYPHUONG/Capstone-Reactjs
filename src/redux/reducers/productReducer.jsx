@@ -1,10 +1,12 @@
 // rxslice
 import { createSlice } from '@reduxjs/toolkit'
+import { useSelector } from 'react-redux'
 import { http } from '../../util/tools';
 
 const initialState = {
     arrProduct : [],
     productDetail:[],
+    quantityCarts: 0,
 }
 
 const productReducer = createSlice({
@@ -12,22 +14,20 @@ const productReducer = createSlice({
   initialState,
   reducers: {
     getProductAction: (state,action) => {
-        // lấy dữ liệu từ pauload
-        const arrProduct = action.payload;
-        // cập nhật lại state
-        state.arrProduct = arrProduct;
+        state.arrProduct = action.payload;
     },
     getProductDetailAction: (state,action) => {
-        // bước 4: sau khi nhận được dữ liệu từ dispatch lần 2
-        const productDetail = action.payload;
-        state.productDetail = productDetail;
-    }
+        state.productDetail = action.payload;
+    },
+    setQuantityCarts: (state,action) => {
+        state.quantityCarts = action.payload;
+    },
   }
 });
 
 //............action type,payload ....................
 
-export const {getProductAction,getProductDetailAction} = productReducer.actions
+export const {getProductAction,getProductDetailAction,setQuantityCarts} = productReducer.actions
 
 export default productReducer.reducer
 

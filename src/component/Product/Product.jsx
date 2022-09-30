@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default function Product({product}) {
+    
   return (
     <>
         <div className="item-product-inner">
@@ -15,7 +16,8 @@ export default function Product({product}) {
                 <p className="description">{product.description}</p>
             </div>
             <div className="icon-heart">
-                <img src="./img/heart.png" alt="..." />
+                <i className="fa-solid fa-heart"></i>
+                <i className="fa-regular fa-heart" style={{display:'none'}}></i>
             </div>
             <div className="buton-buynow-price">
                 <div className="button-buynow">

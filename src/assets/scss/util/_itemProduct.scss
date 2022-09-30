@@ -15,6 +15,7 @@
             img{
                 width: 220px;
                 height: 156px;
+                object-fit: cover;
             }
         }
         .product-name{
@@ -56,8 +57,11 @@
             top: 30px;
             right: 26px;
             cursor: pointer;
-            img{
+            i{
                 width: 41px;
+                height: 41px;
+                font-size: 41px;
+                color: $C-text-red;
             }
         }
         .buton-buynow-price{

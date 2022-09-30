@@ -3,23 +3,27 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup'
 import { useDispatch } from "react-redux";
 import { loginApi } from "../../redux/reducers/userReducer";
+import { useState } from "react";
 
 
 export default function Login(props) {
+  const [showPassWord,setShowPassword] = useState('password')
+  const [showEyeOpen,setShowEyeOpen] = useState('none')
+  const [showEyeClose,setShowEyeClose] = useState('block')
+
   const dispatch = useDispatch();
-  // lấy dữ liệu từ form
   const frm = useFormik({
-      initialValues: {//dữ liệu mặc định ban đầu của form
+      initialValues: {
           email:'',
           password:'',
       },
-      validationSchema: Yup.object().shape({// check validation
+      validationSchema: Yup.object().shape({
           email:Yup.string().required('email không được bỏ trống!').email('email không đúng định dạng!'),
           password:Yup.string().required('password không được bỏ trống!').min(1,'password từ 1-32 ký tự!').max(32,'password từ 1-32 ký tự!'),
-          //.matches(/abc/,'password không đúng định dạng!')
+
       }),
       onSubmit: (values) => {
-          // console.log(values);
+          console.log(values);
         dispatch(loginApi(values))
       }
   })
@@ -31,7 +35,7 @@ export default function Login(props) {
         </div>
         <div className="horizontal-line"></div>
         <div className="form-default">
-          <form>
+          <div className="form-item-container">
             <div className="form-item">
               <p className="form-item-title">Email</p>
               <div className="form-group input-default">
@@ -46,12 +50,20 @@ export default function Login(props) {
             <div className="form-item">
               <p className="form-item-title">Password</p>
               <div className="form-group input-default">
-                <input type="password" placeholder="password" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
+                <input type={showPassWord} placeholder="password" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
                 <div className="eye-input">
-                  <div className="eye-open">
+                  <div className="eye-open" style={{display:showEyeOpen}} onClick={() =>{
+                    setShowEyeClose('block');
+                    setShowEyeOpen('none');
+                    setShowPassword('password')
+                  }} >
                     <i className="fa-solid fa-eye"></i>
                   </div>
-                  <div className="eye-closed">
+                  <div className="eye-closed" style={{display:showEyeClose}} onClick={() =>{
+                    setShowEyeClose('none');
+                    setShowEyeOpen('block');
+                    setShowPassword('text')
+                  }}>
                     <i className="fa-regular fa-eye-slash"></i>
                   </div>
                 </div>
@@ -60,7 +72,7 @@ export default function Login(props) {
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
         <div className="form-group register-now">
           <span className="register-now-question">Register now ?</span>

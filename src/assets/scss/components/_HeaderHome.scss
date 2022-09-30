@@ -41,7 +41,11 @@
                     .HeaderHome-Search{
                         width: 33px;
                         height: 32px;
-                        
+                        color: $C-text-white;
+                        .iconSearch{
+                            font-size: 32px;
+                            line-height: 32px;
+                        }
                     }
                 }
         }

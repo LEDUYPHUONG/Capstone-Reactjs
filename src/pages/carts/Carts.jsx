@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+// import { getCartsApi } from '../../redux/reducers/userReducer';
 
 export default function Carts() {
+  const { userLogin } = useSelector(state => state.userReducer);
+  const dispatch = useDispatch();
+  // useEffect(() => {   
+  //     dispatch(getCartsApi())     
+  // },[])
   return (
     <div>
       <div className="carts">

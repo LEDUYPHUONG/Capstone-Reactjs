@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getProductDetailApi } from "../../redux/reducers/productReducer";
+import { setQuantityCarts } from "../../redux/reducers/productReducer";
 
 
 export default function Detail() {
   const {productDetail} = useSelector (state => state.productReducer)
-  console.log(productDetail);
   const dispatch = useDispatch();
   const params = useParams()
+  const [quantityNumberShoes,setQuantityNumberShoes] = useState(1)
 
   useEffect(() => {
     let {id} = params;
@@ -50,6 +52,10 @@ export default function Detail() {
     })
   }
 
+  const addToCard = () => {
+    dispatch(setQuantityCarts(quantityNumberShoes));
+  }
+
   return (
     <div className="detail">
       <div className="container">
@@ -75,11 +81,22 @@ export default function Detail() {
                             </div>
                             <div className="price">{productDetail.price}$</div>
                             <div className="quantity">
-                              <button className='btn btn-primary btnUp'>+</button>
-                              <span className='number-shoes'>1</span>
-                              <button className='btn btn-primary btnDown'>-</button>
+                              <button className='btn btn-primary btnUp' onClick={() => {
+                                if(quantityNumberShoes >= 1){
+                                  setQuantityNumberShoes(quantityNumberShoes - 1)
+                                }else{
+                                  return
+                                }
+                                
+                              }}>-</button>
+                              <span className='number-shoes'>{quantityNumberShoes}</span>
+                              <button className='btn btn-primary btnDown' onClick={() => {
+                                setQuantityNumberShoes(quantityNumberShoes + 1)
+                              }}>+</button>
                             </div>
-                            <button className="btn btnAddToCarts">Add to carts</button>
+                            <button className="btn btnAddToCarts" onClick={() =>{
+                              addToCard()
+                            }}>Add to carts</button>
                           </div>
                       </div>
                   </div>
@@ -97,3 +114,4 @@ export default function Detail() {
     </div>
   )
 }
+

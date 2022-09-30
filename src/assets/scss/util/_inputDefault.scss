@@ -8,6 +8,7 @@
         height: 100%;
         border: none;
         border-radius: 4px 4px 0px 0px;
+        
         &::placeholder{
             padding: 18px 14px;
             @include text($f-fam:$f-family-Second
@@ -15,6 +16,8 @@
         }
         &:focus-visible{
         outline: none;
+        background:$bg-body;
+        
         }
     }
     .eye-input{

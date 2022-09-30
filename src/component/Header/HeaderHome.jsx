@@ -1,7 +1,28 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-
 export default function HeaderHome() {
+
+
+  const {userLogin} = useSelector(state => state.userReducer)
+  const {quantityCarts} = useSelector (state => state.productReducer)
+  const renderLoginNavItem = () => {
+    console.log(userLogin);
+    if (!userLogin) {
+      return (<NavLink to='login' className='HeaderHome-Login'>Login</NavLink>)
+    }else {
+      return <>
+              <NavLink to='carts' className='HeaderHome-IconGiohang'>
+                  <i className="fa-solid fa-cart-shopping iconGioHang"></i>
+              </NavLink>
+              <NavLink to='carts' className='HeaderHome-NumberCarts'>({quantityCarts}) Hello {userLogin.name}</NavLink>
+          </>
+    }
+    
+  }
+
+//   const host = window.location.protocol + '//' + window.location.host
+// <img src={`${host}./img/iconSearch.png`} alt="iconSearch" />
   return (
       <div className='HeaderHome-Container'>
         <div className="HeaderHome">
@@ -9,14 +30,10 @@ export default function HeaderHome() {
             <NavLink to=''><img src="/img/logo-CyberSoft.png" alt="logo-CyberSoft" /></NavLink>
             <div className="Search-Carts-Login-Rigister">
               <NavLink to='search' className='HeaderHome-Search'>
-                <img src="./img/iconSearch.png" alt="iconSearch" />
+                <i className="fa-solid fa-magnifying-glass iconSearch"></i>
               </NavLink>
               <NavLink to='search' className='HeaderHome-TextSearch'>Search</NavLink>
-              <NavLink to='carts' className='HeaderHome-IconGiohang'>
-                <img src="./img/giohang.png" alt="giohang" />
-              </NavLink>
-              <NavLink to='carts' className='HeaderHome-NumberCarts'>(1)</NavLink>
-              <NavLink to='login' className='HeaderHome-Login'>Login</NavLink>
+              {renderLoginNavItem()}
               <NavLink to='register' className='HeaderHome-Register'>Register</NavLink>
             </div>
           </div>
