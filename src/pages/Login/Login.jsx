@@ -4,8 +4,10 @@ import * as Yup from 'yup'
 import { useDispatch } from "react-redux";
 import { loginApi } from "../../redux/reducers/userReducer";
 import { useState } from "react";
-import FacebookLogin from 'react-facebook-login';
 import axios from "axios";
+import { NavLink } from "react-router-dom";
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+// import FacebookLogin from 'react-facebook-login'; this is button login faccebook default
 
 export default function Login(props) {
   const [showPassWord,setShowPassword] = useState('password')
@@ -89,7 +91,7 @@ export default function Login(props) {
           </div>
         </div>
         <div className="form-group register-now">
-          <span className="register-now-question">Register now ?</span>
+          <NavLink to="/register"><span className="register-now-question">Register now ?</span></NavLink>
           <button className="button-login" type="submit">LOGIN</button>
         </div>
         <div className="login-with-facebook">     
@@ -97,10 +99,15 @@ export default function Login(props) {
             appId="1135304574089308"
             autoLoad={true}
             fields="name,email,picture"
+            render={renderProps => (
+                <button onClick={renderProps.onClick} className="border-0">
+                  <button className="button-facebook">
+                    <i className="fa-brands fa-facebook"></i> Continue with Facebook
+                  </button>
+              </button>
+            )}
             callback={responseFacebook} />
-            {/* <button className="button-facebook">
-            <i className="fa-brands fa-facebook"></i> Continue with Facebook
-          </button> */}
+            {/*  */}
         </div>
         
       </div>
