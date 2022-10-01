@@ -26,9 +26,9 @@ export default function Search(props) {
         setArrProduct([]);
       }
     } catch (err) {
-      console.log(err);
     }
   };
+  
   useEffect(() => {
     // Khi từ khóa có giá trị thì mới chạy
     getProductByKeyword();

@@ -100,7 +100,9 @@ http.interceptors.response.use((response) => {
         // history.push('/');
         return Promise.reject(err)
     }
-
+    if(err.response.status === 500 ){
+        alert('Vui lòng nhập đúng email đã đăng kí!')
+    }
 
     if( err.response.status === 401 || err.response.status === 403){
         alert('Token không hợp lệ! Vui lòng đăng nhập lại!');

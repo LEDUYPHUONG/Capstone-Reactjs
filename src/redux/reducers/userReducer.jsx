@@ -12,7 +12,7 @@ const userReducer = createSlice({
   initialState,
   reducers: {
     getProfileAction: (state,action) => {
-        console.log(action);
+        // console.log(action);
         state.userLogin = action.payload;
     },
 
@@ -50,7 +50,7 @@ export const getProfileApi = () => {
             const result = await http.post('/users/getProfile');
             //lấy được thông tin profile => đưa lên redux
             const action = getProfileAction(result.data.content);
-            console.log(action)
+            // console.log(action)
             dispatch(action);
 
             //lưu vào storage 
@@ -66,7 +66,6 @@ export const createProfileApi = (formData) => {
       try {
         delete formData.passwordConfirm;
         const response = await http.post('/users/signup', formData);
-        console.log(response);
         if (response && response.data) {
           alert(response.data.message);
           history.push('/login');
@@ -84,16 +83,17 @@ export const updateProfileApi = (formData) => {//{email,password}
     return async (dispatch) => {
         try {
             const response = await http.post('/users/updateProfile',formData)
-            console.log(response);
+           
             if (response && response.data) {
+                dispatch(getProfileApi())
                 alert(response.data.content);
-              }
-
+            }
         } catch (err) {
             console.log(err);
+
             if (err.response.status === 400 && err.response.data) {
                 alert(err.response.data.content);
-              }
+            }
         }
     }
     
@@ -103,7 +103,7 @@ export const getUserOderApi = () => {
     return async dispatch => {
         try {
             const response = await http.post('/users/order');
-            console.log(response);
+            // console.log(response);
         } catch (err) {
             
         }
