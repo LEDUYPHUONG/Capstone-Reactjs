@@ -10,6 +10,7 @@ import { getProductApi } from "../../redux/reducers/productReducer";
 
 
 export default function Index() {
+  // "start": "set HTTPS=true&&react-scripts start",
   const {arrProduct} = useSelector(state => state.productReducer);
   const arrProductCarousel = arrProduct.filter(prod => prod.id <= 3)
   

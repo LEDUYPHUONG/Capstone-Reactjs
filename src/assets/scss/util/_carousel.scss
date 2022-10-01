@@ -22,3 +22,72 @@
 .carousel .carousel-status{
     display: none;
 }
+
+.index-carousel{
+    .index-carousel-inner{
+        height: 530px;
+        width: 100%;
+        .container{
+            height: 530px;
+            width: 100%;
+            margin: 0 auto;
+            
+            .carousel-img{
+                .carousel-img-iner{
+                    width: 689px;
+                    height: 383px;
+                    overflow: hidden;
+                    img{
+                       width: 100%;
+                       height: 100%;
+                       object-fit: cover;
+                    }
+                }
+            }
+            .carousel-info{
+                display: flex;
+                flex-wrap: wrap;
+                text-align: start;
+                padding-left: 139px;
+                .product-name{
+                    margin-bottom: 10px;
+                    .product-name-text{
+                        @include text(
+                            $f-fam:$f-family-primary,
+                            $f-styt:normal,
+                            $f-wei:$f-weight-m,
+                            $f-size:$f-size-sssb,
+                            $line-heig:48px,
+                         
+                            $color:$C-text-primary,
+                            $backgr-color:$bg-white,
+                            
+                        );
+                        margin-bottom: 0;
+                        
+                    }
+                }
+                .product-description{
+                    margin-bottom: 40px;
+                    .product-description-text{
+                        @extend .product-name-text;
+                        font-weight: 300;
+                        font-size: 20px;
+                        line-height: 24px; 
+                    }
+                }
+                .button-carousel{
+                   @include button-1($width:auto);
+                   span{
+                    width: 150px;
+                    height: 50px;
+                    font-size: $f-size-b;
+                    font-weight: $f-weight-m;
+                    line-height: 24px;
+                    color: $C-text-white
+                   }
+                };
+            }
+        }
+    }
+}

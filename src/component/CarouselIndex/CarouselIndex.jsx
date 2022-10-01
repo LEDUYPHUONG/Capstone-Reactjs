@@ -21,9 +21,9 @@ export default function CarouselIndex({arrProductCarousel}) {
                                     <div className="product-description">
                                         <div className="product-description-text">{prod.description} </div>
                                     </div>
-                                    <button className="btn btn-primary button-carousel">
-                                     <NavLink to={`/detail/${prod.id}`}>Buy now</NavLink>
-                                    </button>
+                                    <NavLink className="btn btn-primary button-carousel" to={`/detail/${prod.id}`}>
+                                        <span>Buy now</span>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@ export default function CarouselIndex({arrProductCarousel}) {
     return (
         <>
             <Carousel
-            // autoPlay
+            autoPlay
             infiniteLoop
             showArrows={true}
             showThumbs={false}    
