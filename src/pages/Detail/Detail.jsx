@@ -82,8 +82,9 @@ export default function Detail() {
     if (matchproductIndex !== -1) {
       cartListingCopy[matchproductIndex] = {
         ...cartListingCopy[matchproductIndex],
-        quantity:
-          cartListingCopy[matchproductIndex].quantity + quantityNumberShoes,
+        quantityOrder:
+          cartListingCopy[matchproductIndex].quantityOrder +
+          quantityNumberShoes,
         isChecked: false,
         relatedProducts: null,
       };
@@ -95,7 +96,7 @@ export default function Detail() {
         ...cartListingCopy,
         {
           ...productDetail,
-          quantity: quantityNumberShoes,
+          quantityOrder: quantityNumberShoes,
           isChecked: false,
           relatedProducts: null,
         },

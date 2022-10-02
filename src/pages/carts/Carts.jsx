@@ -34,7 +34,7 @@ export default function Carts() {
     if (matchproductIndex !== -1) {
       cartListCopy[matchproductIndex] = {
         ...cartListCopy[matchproductIndex],
-        quantity: newQuantity,
+        quantityOrder: newQuantity,
       };
     }
     dispatch(setCartListing(cartListCopy));
@@ -45,16 +45,18 @@ export default function Carts() {
   // giảm số lương
   const decreaseProduct = (product) => {
     // nếu số lượng lớn hơn 1 thì mới cho giảm
-    if (product.quantity > 1) {
-      const newQuantity = product.quantity - 1;
+    if (product.quantityOrder > 1) {
+      const newQuantity = product.quantityOrder - 1;
       updateQuatity(product, newQuantity);
     }
   };
 
   // tăng số lương
   const increaseProduct = (product) => {
-    const newQuantity = product.quantity + 1;
-    updateQuatity(product, newQuantity);
+    const newQuantity = product.quantityOrder + 1 || 1;
+    if (product.quantity > newQuantity) {
+      updateQuatity(product, newQuantity);
+    }
   };
 
   // xủ lý checked sản phẩm khi checkbox all change
@@ -155,7 +157,7 @@ export default function Carts() {
                         -
                       </button>
                       <button className="btn btn-primary" type="button">
-                        {product.quantity}
+                        {product.quantityOrder}
                       </button>
                       <button
                         className="btn btnUp"
@@ -166,7 +168,7 @@ export default function Carts() {
                       </button>
                     </td>
                     <td className="total-product">
-                      {product.price * product.quantity}
+                      {product.price * product.quantityOrder}
                     </td>
                     <td className="action-button">
                       <button className="btn btnEdit" type="button">
@@ -205,7 +207,7 @@ export default function Carts() {
       const orderDetailIds = cartListIsChecked.map((item) => {
         return {
           productId: item.id.toString(),
-          quantity: item.quantity,
+          quantity: item.quantityOrder,
         };
       });
       console.log(orderDetailIds);

@@ -1,20 +1,20 @@
 @media (min-width: 768px) {
-    .container, .register-container {
+    .container, .register-container,.login-container {
         max-width: 720px;
     }    
 }
 @media (min-width: 992px) {
-    .container, .register-container {
+    .container, .register-container,.login-container {
         max-width: 960px;
     }
 }
 @media (min-width: 1200px) {
-    .container, .register-container {
+    .container, .register-container,.login-container {
         max-width: 1140px;
     }
 }
 @media (min-width: 1260px) {
-    .container, .register-container {
+    .container, .register-container,.login-container {
         max-width: 1200px;
     }
 }
@@ -33,26 +33,8 @@
         margin-left: 10px;
     } 
     // login
-   
-    .login .login-container .form-default .form-item-container .form-item,
-    .login .login-container .register-now,
-    .login .login-container .login-with-facebook{
-        width: 100vh;
-    }
-    .login .login-container .register-now{
-        text-align: center;
-        display: block;
-    }
-    .login .login-container .login-with-facebook{
-        text-align: center;
-    }
-    .login .login-container .form-default{
-        width: 100vh;
-        margin: 0 auto;    
-    }
-    .input-default{
-        width: 100vh;
-    }
+  
+    
 
   }
 
@@ -110,7 +92,10 @@
     .register .register-container .register-container .form-default form .register-gender + .form-item {
         display: none;
     }
-
+    //login
+    .login .login-container .form-default{
+        width: 100%;
+    }
 
   }
 
@@ -133,8 +118,8 @@
         text-align: center;
     }
     // register
-    .register .register-container .register-container{
-        display: block;
+    .register .register-container{
+        width: 100%;
     }
     .register .register-container .register-container .form-default form .form-item-input .form-item{
         margin: 0 auto;
@@ -148,13 +133,27 @@
     .register .register-container .register-container .form-default form .submit-button{
         margin: 0 auto;
     }
-    .register .register-container .register-container .form-default form .form-item-input .form-item{
-        width: 100vh;
-        margin-left: 50px;
+    .register .register-container{
+        width: 100%;
     }
-    .register .register-container .register-container .form-default form .register-gender,
-    .register .register-container .register-container .form-default form .submit-button{
-        margin-left: 50px;
+    .register-container{
+        display: block;
+    }
+
+    //login
+    .login .login-container .form-default .form-item-container .form-item{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .login .login-container{
+        width: 100%;
+    }
+    .input-default{
+        margin: 0 auto;
+    }
+    .login .login-container .form-default .form-item-container .form-item .form-item-title{
+        width: 443px;
+        margin: 0 auto;
     }
   }
   @media (max-width: 575px) {
@@ -205,5 +204,9 @@
     .register .register-container .register-container .form-default form .register-gender,
     .register .register-container .register-container .form-default form .submit-button{
         margin-left: 10px;
+    }
+    // search
+    .container-search .container-search-result .search-result-table .container{
+        width: 100%;
     }
 }
