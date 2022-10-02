@@ -33,7 +33,6 @@ export default function HeaderHome() {
     clearStore(USER_LOGIN);
     localStorage.clear();
     window.location.reload();
-  
   };
 //   const host = window.location.protocol + '//' + window.location.host
 // <img src={`${host}./img/iconSearch.png`} alt="iconSearch" />

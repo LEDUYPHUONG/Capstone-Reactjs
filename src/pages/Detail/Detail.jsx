@@ -4,9 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getProductDetailApi } from "../../redux/reducers/productReducer";
 import { setQuantityCarts } from "../../redux/reducers/productReducer";
+import { setArrProductCarts } from "../../redux/reducers/productReducer";
 
 export default function Detail() {
   const { productDetail } = useSelector((state) => state.productReducer);
+  const { quantityCarts } = useSelector((state) => state.productReducer);
+
+
   const dispatch = useDispatch();
   const params = useParams();
   const [quantityNumberShoes, setQuantityNumberShoes] = useState(1);
@@ -65,7 +69,9 @@ export default function Detail() {
   };
 
   const addToCard = () => {
-    dispatch(setQuantityCarts(quantityNumberShoes));
+    const oldQuantityNumberShoes = quantityNumberShoes;
+    const totalShoes = oldQuantityNumberShoes + quantityCarts;
+    dispatch(setQuantityCarts(totalShoes));
   };
 
   return (
@@ -121,6 +127,7 @@ export default function Detail() {
                         className="btn btnAddToCarts"
                         onClick={() => {
                           addToCard();
+                          dispatch(setArrProductCarts(productDetail));
                         }}
                       >
                         Add to carts

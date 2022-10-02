@@ -1,12 +1,21 @@
 // rxslice
 import { createSlice } from '@reduxjs/toolkit'
-import { useSelector } from 'react-redux'
 import { http } from '../../util/tools';
 
 const initialState = {
     arrProduct : [],
     productDetail:[],
     quantityCarts: 0,
+    arrProductCarts: [],
+    infoOrder: {
+        "orderDetail": [
+            {
+              "productId": "",
+              "quantity": 0
+            }
+          ],
+          "email": ""
+    }
 }
 
 const productReducer = createSlice({
@@ -22,12 +31,22 @@ const productReducer = createSlice({
     setQuantityCarts: (state,action) => {
         state.quantityCarts = action.payload;
     },
+    setArrProductCarts: (state,action) => {
+        state.arrProductCarts.push(action.payload)
+    },
+    getArrProductAfterDelete: (state,action) => {
+        state.arrProductCarts = action.payload
+    },
+    setInfoOrder: (state,action) => {
+        state.infoOrder = action.payload
+        console.log(12345);
+    },
   }
 });
 
 //............action type,payload ....................
 
-export const {getProductAction,getProductDetailAction,setQuantityCarts} = productReducer.actions
+export const {setInfoOrder,getProductAction,getProductDetailAction,setQuantityCarts,setArrProductCarts,getArrProductAfterDelete} = productReducer.actions
 
 export default productReducer.reducer
 
@@ -35,7 +54,6 @@ export default productReducer.reducer
 
 export const getProductApi =  () => {
     return async (dispatch) => {
-        // console.log(getState());
         try{
             const result = await http.get('/product');
             let arrProduct = result.data.content
@@ -50,18 +68,8 @@ export const getProductApi =  () => {
 
 export const getProductDetailApi = (id) =>{
     return async (dispatch) => {
-        // bước 2: thực thi thunk
         try {
             let result = await http.get(`/Product/getbyid?id=${id}`)
-            /**
-             * axios({
-                url: `https://shop.cyberlearn.vn/api/Product/getbyid?id=${id}`,
-                method: 'GET'
-            });
-             */
-            //sau khi lấy dữ liệu api thành công => đưa lên reducer = hàm dispatch2 từ thuk
-            //const action = {type,payload}
-            // bước 3: sau khi có dữ liệu => dispatch lần 2
             let arrProduct = result.data.content
             const action = getProductDetailAction(arrProduct)
             dispatch(action)
@@ -70,3 +78,21 @@ export const getProductDetailApi = (id) =>{
         }
     }
 }
+
+// export const postProductCartsOrder = (infoOrder) =>{
+//     return async () => {
+//         try {
+        
+//           const response = await http.post('/Users/order', infoOrder);
+//           console.log(456);
+//           console.log(response);
+//             alert('order thanh cong')
+//         } catch (err) {
+//             console.log(789);
+//           console.log(err);
+//         //   if (err.response.status === 400 && err.response.data) {
+//         //     alert(err.response.data.message);
+//         //   }
+//         }
+//       };
+//   };

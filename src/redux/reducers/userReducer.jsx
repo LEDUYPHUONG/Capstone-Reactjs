@@ -78,6 +78,21 @@ export const createProfileApi = (formData) => {
       }
     };
 };
+
+// export const getOrderHistoryApi = () => {
+//     return async dispatch => {
+//         try {
+//             const result = await http.post('/users/getProfile');
+//             const action = getProfileAction(result.data.content);
+//             dispatch(action);
+//         } catch (err) {
+            
+//         }
+//     }
+// }
+
+
+
 // profile
 export const updateProfileApi = (formData) => {//{email,password}
     return async (dispatch) => {
