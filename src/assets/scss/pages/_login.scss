@@ -65,13 +65,16 @@
             margin: 0 auto;
             width: 443px;
             padding-bottom: 16px;
-            .button-facebook{
-                @include button-3();
-                i{
-                    width: 43px;
-                    height: 43px;
-                    font-size: 43px;
-                    vertical-align: middle;
+            .button-facebook-out{
+                @include button-3($width: 442px,$height: 63px);
+                .button-facebook{
+                    
+                    i{
+                        width: 43px;
+                        height: 43px;
+                        font-size: 43px;
+                        vertical-align: middle;
+                    }
                 }
             }
         }

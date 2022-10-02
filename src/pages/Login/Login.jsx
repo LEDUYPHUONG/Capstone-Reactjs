@@ -2,7 +2,7 @@ import React from "react";
 import {useFormik} from 'formik';
 import * as Yup from 'yup'
 import { useDispatch } from "react-redux";
-import { loginApi } from "../../redux/reducers/userReducer";
+import { loginApi, loginFacebook } from "../../redux/reducers/userReducer";
 import { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
@@ -32,16 +32,7 @@ export default function Login(props) {
   })
 
   const responseFacebook = (response) => {
-    axios({
-      url:"https://shop.cyberlearn.vn/api/Users/facebooklogin",
-      method: "POST",
-      data: {
-        facebookToken: response.accessToken
-      }
-    }).then(res => {
-      // lưu vào localStore
-      localStorage.setItem("accessToken", res.data.content.accessToken )
-    })
+    dispatch(loginFacebook(response.accessToken))
   }
 
   return (
@@ -97,13 +88,13 @@ export default function Login(props) {
         <div className="login-with-facebook">     
           <FacebookLogin
             appId="1135304574089308"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
             render={renderProps => (
-                <button onClick={renderProps.onClick} className="border-0">
-                  <button className="button-facebook">
+                <button onClick={renderProps.onClick} className="border-0 button-facebook-out">
+                  <span className="button-facebook">
                     <i className="fa-brands fa-facebook"></i> Continue with Facebook
-                  </button>
+                  </span>
               </button>
             )}
             callback={responseFacebook} />

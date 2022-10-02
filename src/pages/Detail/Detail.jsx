@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
-import { getProductDetailApi } from "../../redux/reducers/productReducer";
-import { setQuantityCarts } from "../../redux/reducers/productReducer";
-import { setArrProductCarts } from "../../redux/reducers/productReducer";
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
+import { getProductDetailApi } from '../../redux/reducers/productReducer';
+import { setStoreJson, CART_LIST } from '../../util/tools';
+import { setCartListing } from '../../redux/reducers/productReducer';
 
 export default function Detail() {
   const { productDetail } = useSelector((state) => state.productReducer);
-  const { quantityCarts } = useSelector((state) => state.productReducer);
-
+  const { cartListing } = useSelector((state) => state.productReducer);
+  // const { quantityCarts } = useSelector((state) => state.productReducer);
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -48,7 +48,7 @@ export default function Detail() {
               <i className="fa-solid fa-heart"></i>
               <i
                 className="fa-regular fa-heart"
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
               ></i>
             </div>
             <div className="buton-buynow-price">
@@ -69,9 +69,44 @@ export default function Detail() {
   };
 
   const addToCard = () => {
-    const oldQuantityNumberShoes = quantityNumberShoes;
-    const totalShoes = oldQuantityNumberShoes + quantityCarts;
-    dispatch(setQuantityCarts(totalShoes));
+    let cartListingCopy = cartListing ? [...cartListing] : [];
+    const { id } = productDetail;
+    // tìm kiếm vị trí của sản phẩm trong danh sách cart
+    const matchproductIndex =
+      cartListingCopy &&
+      cartListingCopy.findIndex((item) => {
+        return item.id === id;
+      });
+    // tim kiem neu san pham da ton tai thi tang so luong, nguoc lại thì thêm sản phẩm vào danh sách cart
+    // thêm isChecked để xủ lý checked trong trang cart; set relatedProducts : null vì không dùng tới
+    if (matchproductIndex !== -1) {
+      cartListingCopy[matchproductIndex] = {
+        ...cartListingCopy[matchproductIndex],
+        quantity:
+          cartListingCopy[matchproductIndex].quantity + quantityNumberShoes,
+        isChecked: false,
+        relatedProducts: null,
+      };
+      // lưu vào redux
+      dispatch(setCartListing(cartListingCopy));
+      alert(`${cartListingCopy[matchproductIndex].name} is updated quatity`);
+    } else {
+      cartListingCopy = [
+        ...cartListingCopy,
+        {
+          ...productDetail,
+          quantity: quantityNumberShoes,
+          isChecked: false,
+          relatedProducts: null,
+        },
+      ];
+
+      // lưu vào redux
+      dispatch(setCartListing(cartListingCopy));
+      alert(`${productDetail.name} is added to cart`);
+    }
+    //lưu vào storage
+    setStoreJson(CART_LIST, cartListingCopy);
   };
 
   return (
@@ -127,7 +162,6 @@ export default function Detail() {
                         className="btn btnAddToCarts"
                         onClick={() => {
                           addToCard();
-                          dispatch(setArrProductCarts(productDetail));
                         }}
                       >
                         Add to carts

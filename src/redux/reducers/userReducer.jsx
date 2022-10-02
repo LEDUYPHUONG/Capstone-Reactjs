@@ -30,12 +30,32 @@ export const loginApi = (userLogin) => {//{email,password}
             const result = await http.post('/users/signin',userLogin)
             //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
             console.log(result);
-            setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
+            // setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
             setStore(ACCESS_TOKEN,result.data.content.accessToken);
             //chuyển hướng về profile, trang quên mật khẩu
             history.push('/profile')
             // sau khi đăng nhập thành công thì dispatch action getProfile
             dispatch(getProfileApi())
+        } catch (err) {
+            history.push('/home')
+            console.log(err);
+        }
+    }
+    
+}
+// login fb
+export const loginFacebook = (accessToken) => {//{email,password}
+    return async (dispatch) => {
+        try {
+            const result = await http.post('/Users/facebooklogin',{facebookToken:accessToken})
+                //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
+                console.log(result);
+                // setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
+                setStore(ACCESS_TOKEN,result.data.content.accessToken);
+                //chuyển hướng về profile, trang quên mật khẩu
+                history.push('/profile')
+                // sau khi đăng nhập thành công thì dispatch action getProfile
+                dispatch(getProfileApi())
         } catch (err) {
             history.push('/home')
             console.log(err);
