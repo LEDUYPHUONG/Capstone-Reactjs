@@ -6,8 +6,8 @@ import { createProfileApi } from "../../redux/reducers/userReducer";
 import { useState } from "react";
 
 export default function Register() {
-  const [showPassWord,setShowPassword] = useState(true)
-  const [showPassWordCF,setShowPasswordCF] = useState(true)
+  const [showPassWord,setShowPassword] = useState(true);
+  const [showPassWordCF,setShowPasswordCF] = useState(true);
 
   const dispatch = useDispatch();
   const frm = useFormik({
@@ -24,7 +24,7 @@ export default function Register() {
           password:Yup.string().required('password không được bỏ trống!').min(1,'password từ 1-32 ký tự!').max(32,'password từ 1-32 ký tự!'),
           phone:Yup.string().required('phone không được bỏ trống!').min(9,'phone từ 9-11 số!').max(11,'phone từ 9-11 số!'),
           name:Yup.string().required('name không được bỏ trống!').min(1,'password từ 1-32 ký tự!').max(32,'password từ 1-32 ký tự!'),
-          passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], 'passwordConfirm phải giống với password!'),
+          passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], 'passwordConfirm phải giống với password!').required('passwordConfirm không được bỏ trống!'),
           gender:Yup.string().required('gender không được bỏ trống!')
       }),
       onSubmit: (values) => {
@@ -35,14 +35,14 @@ export default function Register() {
           }
         dispatch(createProfileApi(values))
       }
-  })
+  });
+
   return (
     <div className="register">
       <div className="container">
         <div className="register-title">
           <p className="register-title-text">Register</p>
         </div>
-        <div className="horizontal-line"></div>
         <div className='register-container'>
           <form className="form-default" onSubmit={frm.handleSubmit}>
             <div className='form-item-input row'>
@@ -79,7 +79,7 @@ export default function Register() {
               <div className="form-item col-md-6">
                 <p className='form-item-title'>Password</p>
                 <div className="input-default">
-                  <i class="fa-solid fa-key"></i>
+                  <i className="fa-solid fa-key"></i>
                   <input type={showPassWord ? "password" : 'text'} placeholder="password" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
                   <div className="eye-input">
                     <div className="eye">
@@ -96,7 +96,7 @@ export default function Register() {
               <div className="form-item col-md-6">
                 <p className='form-item-title'>Password confirm</p>
                 <div className="input-default">
-                  <i className="fa-solid fa-lock"></i>
+                  <i className={frm.errors.passwordConfirm ? "fa-solid fa-unlock": "fa-solid fa-lock"}></i>
                   <input type={showPassWordCF ? 'password' : 'text'} placeholder="password confirm" id="passwordConfirm" name="passwordConfirm" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
                   <div className="eye-input">
                     <div className="eye">
@@ -122,12 +122,14 @@ export default function Register() {
                     <label htmlFor="css">Female</label>
                   </div>
                 </div>
-                {frm.errors.gender ? <span className="text-danger text-err">{frm.errors.gender}</span>: ''}
-              </div>
-              <div className="submit-button">
-                  <button className='button-submit' type="submit">Submit</button>
+                <div className="span-danger">
+                  {frm.errors.gender ? <span className="text-danger text-err">{frm.errors.gender}</span>: ''}
                 </div>
+              </div>
             </div>
+            <div className={frm.errors.passwordConfirm ? "submit-button opacity-0" : "submit-button"}>
+                  <button className='button-submit' type="submit">Submit</button>
+              </div>
           </form>          
         </div>
       </div>

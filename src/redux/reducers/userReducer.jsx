@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ACCESS_TOKEN, clearStore, getStoreJson, http, setCookie, setStore, setStoreJson, USER_LOGIN } from '../../util/tools';
+import { ACCESS_TOKEN, getStoreJson, http, setStore, setStoreJson, USER_LOGIN } from '../../util/tools';
 import { history } from '../../index';
 
 const initialState = {
@@ -23,16 +23,12 @@ export const {getProfileAction} = userReducer.actions
 export default userReducer.reducer
 
 // login
-export const loginApi = (userLogin) => {//{email,password}
+export const loginApi = (userLogin) => {
     return async (dispatch) => {
         try {
             const result = await http.post('/users/signin',userLogin)
-            //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
-            // setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
             setStore(ACCESS_TOKEN,result.data.content.accessToken);
-            //chuyển hướng về profile, trang quên mật khẩu
             history.push('/profile')
-            // sau khi đăng nhập thành công thì dispatch action getProfile
             dispatch(getProfileApi())
         } catch (err) {
             history.push('/home')
@@ -42,16 +38,12 @@ export const loginApi = (userLogin) => {//{email,password}
     
 }
 // login fb
-export const loginFacebook = (accessToken) => {//{email,password}
+export const loginFacebook = (accessToken) => {
     return async (dispatch) => {
         try {
             const result = await http.post('/Users/facebooklogin',{facebookToken:accessToken})
-                //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
-                // setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
                 setStore(ACCESS_TOKEN,result.data.content.accessToken);
-                //chuyển hướng về profile, trang quên mật khẩu
                 history.push('/profile')
-                // sau khi đăng nhập thành công thì dispatch action getProfile
                 dispatch(getProfileApi())
         } catch (err) {
             history.push('/home')
@@ -65,11 +57,8 @@ export const getProfileApi = () => {
     return async dispatch => {
         try {
             const result = await http.post('/users/getProfile');
-            //lấy được thông tin profile => đưa lên redux
             const action = getProfileAction(result.data.content);
             dispatch(action);
-
-            //lưu vào storage 
             setStoreJson(USER_LOGIN,result.data.content)
         } catch (err) {
             
@@ -94,23 +83,8 @@ export const createProfileApi = (formData) => {
       }
     };
 };
-
-// export const getOrderHistoryApi = () => {
-//     return async dispatch => {
-//         try {
-//             const result = await http.post('/users/getProfile');
-//             const action = getProfileAction(result.data.content);
-//             dispatch(action);
-//         } catch (err) {
-            
-//         }
-//     }
-// }
-
-
-
 // profile
-export const updateProfileApi = (formData) => {//{email,password}
+export const updateProfileApi = (formData) => {
     return async (dispatch) => {
         try {
             const response = await http.post('/users/updateProfile',formData)
@@ -118,6 +92,7 @@ export const updateProfileApi = (formData) => {//{email,password}
             if (response && response.data) {
                 dispatch(getProfileApi())
                 alert(response.data.content);
+                window.location.reload()
             }
         } catch (err) {
             console.log(err);
@@ -133,7 +108,7 @@ export const updateProfileApi = (formData) => {//{email,password}
 export const getUserOderApi = () => {
     return async dispatch => {
         try {
-            const response = await http.post('/users/order');
+            await http.post('/users/order');
         } catch (err) {
             
         }

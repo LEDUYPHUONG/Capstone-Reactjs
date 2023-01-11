@@ -87,7 +87,7 @@ export default function Search(props) {
   return (
     <form className="container-search" onSubmit={handleSubmit}>
       <div className="search-SearchArea">
-        <div className="container-search-area">
+        <div className="container">
           <p className="search-text">Search</p>
           <div className="search-menu">
             <div className="input-default">
@@ -99,7 +99,10 @@ export default function Search(props) {
               />
             </div>
             <div className="search-button">
-              <button>SEARCH</button>
+              <button>
+                <span>SEARCH</span>
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
           </div>
         </div>

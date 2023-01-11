@@ -106,6 +106,9 @@
         width: 100%;
         text-align: center;
     }
+    .item-product{
+        width: 100%;
+    }
 }
 
 @media (max-width: 767px) {
@@ -177,9 +180,9 @@
         min-width: 200px;
     }
     // search
-    .container-search .container-search-result .search-result-table .container{
-        max-width: 400px;
-    }
+    // .container-search .container-search-result .search-result-table .container{
+    //     max-width: 400px;
+    // }
     .login .login-container .form-default .form-item-container .form-item,
     .login .login-container .register-now,
     .login .login-container .login-with-facebook{
@@ -191,6 +194,21 @@
         max-width: 443px;
     }
     .container-search .container-search-result .search-result-table .container .search-price{
-        max-width: 200px;
+        max-width: 300px;
+        min-width: 250px;
+  
+    }
+    .container-search .search-SearchArea .container{
+        padding: 0 15px;
+    }
+    .container-search .search-SearchArea .container .search-menu .search-button button span{
+        display: none;
+    }
+    .container-search .search-SearchArea .container .search-menu .search-button button i{
+        display: block;
+    }
+    .container-search .search-SearchArea .container .search-menu .search-button button{
+        width: 44px;
+        height: 44px;
     }
 }
