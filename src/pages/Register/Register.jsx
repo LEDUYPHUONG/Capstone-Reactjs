@@ -6,12 +6,8 @@ import { createProfileApi } from "../../redux/reducers/userReducer";
 import { useState } from "react";
 
 export default function Register() {
-  const [showPassWord,setShowPassword] = useState('password')
-  const [showEyeOpen,setShowEyeOpen] = useState('none')
-  const [showEyeClose,setShowEyeClose] = useState('block')
-  const [showPassWordCF,setShowPasswordCF] = useState('password')
-  const [showEyeOpenCF,setShowEyeOpenCF] = useState('none')
-  const [showEyeCloseCF,setShowEyeCloseCF] = useState('block')
+  const [showPassWord,setShowPassword] = useState(true)
+  const [showPassWordCF,setShowPasswordCF] = useState(true)
 
   const dispatch = useDispatch();
   const frm = useFormik({
@@ -32,7 +28,6 @@ export default function Register() {
           gender:Yup.string().required('gender không được bỏ trống!')
       }),
       onSubmit: (values) => {
-          console.log(values);
           if(values.gender === 'true'){
             values.gender = true
           }else{
@@ -43,113 +38,97 @@ export default function Register() {
   })
   return (
     <div className="register">
-      <div className="register-container">
+      <div className="container">
         <div className="register-title">
           <p className="register-title-text">Register</p>
         </div>
         <div className="horizontal-line"></div>
         <div className='register-container'>
-          <div className='register-avata'></div>
-          <div className="form-default">
-            <form onSubmit={frm.handleSubmit}>
-              <div className='form-item-input'>
-                <div className="form-item">
-                  <p className='form-item-title'>Email</p>
-                  <div className="input-default">
-                    <input type="text" placeholder="email" id="email" name="email" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
-                  </div>
-                  <div className="span-danger">
-                    {frm.errors.email ? <span className="text-danger text-err">{frm.errors.email}</span>: ''}
-                  </div>
+          <form className="form-default" onSubmit={frm.handleSubmit}>
+            <div className='form-item-input row'>
+              <div className="form-item col-md-6">
+                <p className='form-item-title'>Email</p>
+                <div className="input-default">
+                  <i className="fa-solid fa-envelope"></i>
+                  <input type="text" placeholder="email" id="email" name="email" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
                 </div>
-                <div className="form-item">
-                  <p className='form-item-title'>Name</p>
-                  <div className="input-default">
+                <div className="span-danger">
+                  {frm.errors.email ? <span className="text-danger text-err">{frm.errors.email}</span>: ''}
+                </div>
+              </div>
+              <div className="form-item col-md-6">
+                <p className='form-item-title'>Name</p>
+                <div className="input-default">
+                  <i className="fa-solid fa-user"></i>
                   <input type="text" placeholder="name" id="name" name="name" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
-                    <div className="span-danger">
-                    {frm.errors.name ? <span className="text-danger text-err">{frm.errors.name}</span>: ''}
+                </div>
+                <div className="span-danger">
+                  {frm.errors.name ? <span className="text-danger text-err">{frm.errors.name}</span>: ''}
+                </div>
+              </div>
+              <div className="form-item col-md-6">
+                <p className='form-item-title'>Phone</p>
+                <div className="input-default">
+                  <i className="fa-solid fa-phone"></i>
+                  <input type="text" placeholder="phone" id="phone" name="phone" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
+                </div>
+                <div className="span-danger">
+                    {frm.errors.phone ? <span className="text-danger text-err">{frm.errors.phone}</span>: ''}
+                  </div>
+              </div>
+              <div className="form-item col-md-6">
+                <p className='form-item-title'>Password</p>
+                <div className="input-default">
+                  <i class="fa-solid fa-key"></i>
+                  <input type={showPassWord ? "password" : 'text'} placeholder="password" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
+                  <div className="eye-input">
+                    <div className="eye">
+                      <i className={showPassWord ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"} onClick={() =>{
+                        setShowPassword(!showPassWord)
+                      }}></i>
                     </div>
                   </div>
                 </div>
-                <div className="form-item">
-                  <p className='form-item-title'>Password</p>
-                  <div className="input-default">
-                    <input type={showPassWord} placeholder="password" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
-                    <div className="eye-input">
-                      <div className="eye-open" style={{display:showEyeOpen}} onClick={() =>{
-                        setShowEyeClose('block');
-                        setShowEyeOpen('none');
-                        setShowPassword('password')
-                      }} >
-                        <i className="fa-solid fa-eye"></i>
-                      </div>
-                      <div className="eye-closed" style={{display:showEyeClose}} onClick={() =>{
-                        setShowEyeClose('none');
-                        setShowEyeOpen('block');
-                        setShowPassword('text')
-                      }}>
-                        <i className="fa-regular fa-eye-slash"></i>
-                    </div>
-                  </div>
-                    <div className="span-danger">
-                      {frm.errors.password ? <span className="text-danger text-err">{frm.errors.password}</span>: ''}
+                <div className="span-danger">
+                  {frm.errors.password ? <span className="text-danger text-err">{frm.errors.password}</span>: ''}
+                </div>
+              </div>
+              <div className="form-item col-md-6">
+                <p className='form-item-title'>Password confirm</p>
+                <div className="input-default">
+                  <i className="fa-solid fa-lock"></i>
+                  <input type={showPassWordCF ? 'password' : 'text'} placeholder="password confirm" id="passwordConfirm" name="passwordConfirm" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
+                  <div className="eye-input">
+                    <div className="eye">
+                      <i className={showPassWordCF ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"} onClick={() =>{
+                        setShowPasswordCF(!showPassWordCF)
+                      }}></i>
                     </div>
                   </div>
                 </div>
-                <div className="form-item">
-                  <p className='form-item-title'>Phone</p>
-                  <div className="input-default">
-                    <input type="text" placeholder="phone" id="phone" name="phone" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
-                  </div>
-                  <div className="span-danger">
-                      {frm.errors.phone ? <span className="text-danger text-err">{frm.errors.phone}</span>: ''}
-                    </div>
+                <div className="span-danger">
+                  {frm.errors.passwordConfirm ? <span className="text-danger text-err">{frm.errors.passwordConfirm}</span>: ''}
                 </div>
-                <div className="form-item">
-                  <p className='form-item-title'>Password confirm</p>
-                  <div className="input-default">
-                    <input type={showPassWordCF} placeholder="passwordConfirm" id="passwordConfirm" name="passwordConfirm" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
-                    <div className="eye-input">
-                      <div className="eye-open" style={{display:showEyeOpenCF}} onClick={() =>{
-                        setShowEyeCloseCF('block');
-                        setShowEyeOpenCF('none');
-                        setShowPasswordCF('password')
-                      }} >
-                        <i className="fa-solid fa-eye"></i>
-                      </div>
-                      <div className="eye-closed" style={{display:showEyeCloseCF}} onClick={() =>{
-                        setShowEyeCloseCF('none');
-                        setShowEyeOpenCF('block');
-                        setShowPasswordCF('text')
-                      }}>
-                        <i className="fa-regular fa-eye-slash"></i>
-                    </div>
-                  </div>
-                    <div className="span-danger">
-                      {frm.errors.passwordConfirm ? <span className="text-danger text-err">{frm.errors.passwordConfirm}</span>: ''}
-                    </div>
-                  </div>
-                </div>
-                <div className="register-gender" id="gender">
-                  <p className='Gender-title'>Gender</p>
-                  <div className="male-option">
+              </div>
+              <div className="form-item col-md-6" id="gender">
+                <p className='form-item-title'>Gender</p>
+                <div className="option-gender">
+                  <div className="option">
                     <input type="radio" id="male" name="gender" value={true} onClick={frm.handleChange}/>
                     <label htmlFor='css'>Male</label>
                   </div>
-                  <div className="female-option">
+                  <div className="option">
                     <input type="radio" id="female" name="gender" value={false} onClick={frm.handleChange}/>
                     <label htmlFor="css">Female</label>
                   </div>
-                  {frm.errors.gender ? <span className="text-danger text-err">{frm.errors.gender}</span>: ''}
                 </div>
-                <div className="form-item">
-                </div>
-                <div className="submit-button">
-                    <button className='button-submit' type="submit">Submit</button>
-                  </div>
+                {frm.errors.gender ? <span className="text-danger text-err">{frm.errors.gender}</span>: ''}
               </div>
-            </form>
-          </div>          
+              <div className="submit-button">
+                  <button className='button-submit' type="submit">Submit</button>
+                </div>
+            </div>
+          </form>          
         </div>
       </div>
     </div>

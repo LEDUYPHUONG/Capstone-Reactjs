@@ -13,7 +13,6 @@ export default function ResponsiveItem({Component, ComponentMobile}) {
     if(screen.width < 768 && ComponentMobile) {
         ComponentRender = ComponentMobile;
     }
-    console.log(screen.width);
     useEffect(() => {
         // khi người dùng resize
         let resizeFunction = () => {

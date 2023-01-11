@@ -29,8 +29,8 @@ export default function FooterHome() {
               <div className="col-4 footer-register">
                 <div className="footer-title">REGISTER</div>
                 <ul>
-                  <li><NavLink to='register'>register</NavLink></li> 
-                  <li><NavLink to='login'>login</NavLink></li>
+                  <li><NavLink to='register'>Register</NavLink></li> 
+                  <li><NavLink to='login'>Login</NavLink></li>
                   <li></li>
                   <li></li>
                 </ul>

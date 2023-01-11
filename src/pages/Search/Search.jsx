@@ -19,7 +19,6 @@ export default function Search(props) {
           url: "https://shop.cyberlearn.vn/api/Product?keyword=" + keyword,
           method: "GET",
         });
-        console.log(result.data.content);
         setArrProduct(result.data.content);
         clearTimeout(timeoutRef.current);
       } else {

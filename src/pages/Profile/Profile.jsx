@@ -36,7 +36,6 @@ export default function Profile(props) {
         .max(32, "password từ 1-32 ký tự!"),
     }),
     onSubmit: (values) => {
-      // console.log(values);
       if (values.gender === "true") {
         values.gender = true;
       } else {

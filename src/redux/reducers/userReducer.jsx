@@ -12,7 +12,6 @@ const userReducer = createSlice({
   initialState,
   reducers: {
     getProfileAction: (state,action) => {
-        // console.log(action);
         state.userLogin = action.payload;
     },
 
@@ -29,7 +28,6 @@ export const loginApi = (userLogin) => {//{email,password}
         try {
             const result = await http.post('/users/signin',userLogin)
             //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
-            console.log(result);
             // setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
             setStore(ACCESS_TOKEN,result.data.content.accessToken);
             //chuyển hướng về profile, trang quên mật khẩu
@@ -49,7 +47,6 @@ export const loginFacebook = (accessToken) => {//{email,password}
         try {
             const result = await http.post('/Users/facebooklogin',{facebookToken:accessToken})
                 //sau khi đăng nhập thành công +> lưu dữ liệu vào localStorage haowcj cookie
-                console.log(result);
                 // setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
                 setStore(ACCESS_TOKEN,result.data.content.accessToken);
                 //chuyển hướng về profile, trang quên mật khẩu
@@ -70,7 +67,6 @@ export const getProfileApi = () => {
             const result = await http.post('/users/getProfile');
             //lấy được thông tin profile => đưa lên redux
             const action = getProfileAction(result.data.content);
-            // console.log(action)
             dispatch(action);
 
             //lưu vào storage 
@@ -138,7 +134,6 @@ export const getUserOderApi = () => {
     return async dispatch => {
         try {
             const response = await http.post('/users/order');
-            // console.log(response);
         } catch (err) {
             
         }

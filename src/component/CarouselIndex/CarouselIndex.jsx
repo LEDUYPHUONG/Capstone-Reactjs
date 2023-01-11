@@ -8,7 +8,7 @@ export default function CarouselIndex({arrProductCarousel}) {
         return arrProductCarousel.map((prod,index) => {
             return <div className="index-carousel" key={index}>
                         <div className="index-carousel-inner">
-                            <div className="container d-flex justify-content-between align-items-center">
+                            <div className="container">
                                 <div className="carousel-img">
                                     <div className="carousel-img-iner">
                                         <img src={prod.image} alt="..." />
@@ -34,7 +34,7 @@ export default function CarouselIndex({arrProductCarousel}) {
     return (
         <>
             <Carousel
-            autoPlay
+            autoPlay = {false}
             infiniteLoop
             showArrows={true}
             showThumbs={false}    

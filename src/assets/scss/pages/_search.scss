@@ -46,6 +46,7 @@
                 width: 1084px;
                 padding: 0;
                 .search-price{
+                    max-width: 400px;
                     .search-price-title{
                         @include text($f-fam:$f-family-Second,$f-styt:normal,$f-wei:$f-weight-ssm,
                         $f-size:$f-size-sssm,$line-heig:24px,);

@@ -1,14 +1,15 @@
 .register{
     background-color: $bg-body;
-    overflow: hidden;
-    .register-container{
+    .container{
         margin: 0 auto;
-        width: calc(1280px - 96*2px);
         .register-title{
             padding-top: 60px;
-            margin-bottom: 42px;
+            margin-bottom: 60px;
+            text-align: center;
+            
             .register-title-text{
                 @include text($f-size:$f-size-sssb,$line-heig:48px,$backgr-color:$bg-body);
+                margin-bottom: 0;
             }
         }
         .horizontal-line{
@@ -19,87 +20,50 @@
         .register-container{
             margin: 0 auto;
             padding: 0;
-            display: flex;
-            justify-content: space-between;
-          
-            // .register-avata{
-
-            // }
             .form-default{
+                margin: 0 auto;
+                .form-item-input{
+                    .form-item{
+                        max-width: 443px;
+                        height: 100px;
+                        margin: 0 auto;
+                        margin-bottom: 10px;
+                        .form-item-title{
+                            margin-bottom: 5px;
+                        }
 
-               margin: 0 auto;
-                form{
-                    .form-item-input{
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: space-between;
-                        align-items: center;
-                        .form-item{
-                            width: 443px;
-                            height: 100px;
-                            
-                            .form-item-title{
-                                padding-left: 5px;
-                                margin-bottom: 5px;
+                        .span-danger{
+                            .text-err{
+                                font-size: 16px;
+                                line-height: 16px;
+                                color: #F50E0E;
                             }
-                            // .input-default{
-                            // }
-                            .span-danger{
-                                height: 16px;
-                                .text-err{
-                                    font-size: 16px;
-                                    line-height: 16px;
-                                    color: #F50E0E;
+                        }
+                        .option-gender{
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            .option{
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                input{
+                                    width: 40px;
+                                    height: 40px;
+                                }
+                                label{
+                                    margin-left: 10px;
                                 }
                             }
-                        
-                        .space-betwwen-form-item{
-                            height: 18px;
                         }
-                        
-                    }
-                    }
-                    .register-gender{
-                        display: flex;
-                      
-                        align-items: center;
-                        width: 443px;
-                        height: 100px;
-                        .Gender-title{
-                            margin-bottom: 0;
-                        }
-                        .male-option{
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-                            margin-left: 23px;
-                            input{
-                                width: 40px;
-                                height: 40px;
-                            }
-                            // label{
-                    
-                            // }
-                        }
-                        .female-option{
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 23px;
-                            input{
-                                width: 40px;
-                                height: 40px;
-                            }
-                            // label{
-                    
-                            // }
-                        }
-                        
                     }
                     .submit-button{
-                        width: 443px;
-                            height: 100px;
-                        text-align: end;
+                        width: 100%;
+                        height: 100px;
+                        margin: 0 auto;
+                        text-align: center;
+                        line-height: 100px;
+                        border-top: 1px solid #cccccc;
                         .button-submit{
                             @include button-2();
                         }

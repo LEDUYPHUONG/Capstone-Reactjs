@@ -4,16 +4,12 @@ import * as Yup from 'yup'
 import { useDispatch } from "react-redux";
 import { loginApi, loginFacebook } from "../../redux/reducers/userReducer";
 import { useState } from "react";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 // import FacebookLogin from 'react-facebook-login'; this is button login faccebook default
 
 export default function Login(props) {
-  const [showPassWord,setShowPassword] = useState('password')
-  const [showEyeOpen,setShowEyeOpen] = useState('none')
-  const [showEyeClose,setShowEyeClose] = useState('block')
-
+  const [showPassWord,setShowPassword] = useState(true)
   const dispatch = useDispatch();
   const frm = useFormik({
       initialValues: {
@@ -26,7 +22,6 @@ export default function Login(props) {
 
       }),
       onSubmit: (values) => {
-          console.log(values);
         dispatch(loginApi(values))
       }
   })
@@ -46,38 +41,30 @@ export default function Login(props) {
           <div className="form-item-container">
             <div className="form-item">
               <p className="form-item-title">Email</p>
-              <div className="form-group input-default">
+              <div className="input-default">
+                <i className="fa-solid fa-envelope"></i>
                 <input type="text" placeholder="email" id="email" name="email" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
               </div>
               <div className="span-danger">
                 {frm.errors.email ? <span className="text-danger text-err">{frm.errors.email}</span>: ''}
               </div>
             </div>
-            <div className="space-betwwen-form-item"></div>
             <div className="form-item">
               <p className="form-item-title">Password</p>
-              <div className="form-group input-default">
-                <input type={showPassWord} placeholder="password" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
+              <div className="input-default">
+                <i class="fa-solid fa-key"></i>
+                <input type={showPassWord ? 'password' : 'text'} placeholder="password" id="password" name="password" onChange={frm.handleChange} onBlur={frm.handleBlur}/>
                 <div className="eye-input">
-                  <div className="eye-open" style={{display:showEyeOpen}} onClick={() =>{
-                    setShowEyeClose('block');
-                    setShowEyeOpen('none');
-                    setShowPassword('password')
-                  }} >
-                    <i className="fa-solid fa-eye"></i>
+                  <div className="eye">
+                    <i className={showPassWord ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"} onClick={() =>{
+                      setShowPassword(!showPassWord)
+                    }}></i>
                   </div>
-                  <div className="eye-closed" style={{display:showEyeClose}} onClick={() =>{
-                    setShowEyeClose('none');
-                    setShowEyeOpen('block');
-                    setShowPassword('text')
-                  }}>
-                    <i className="fa-regular fa-eye-slash"></i>
-                  </div>
-                </div>
-                <div className="span-danger">
-                  {frm.errors.password ? <span className="text-danger text-err">{frm.errors.password}</span>: ''}
                 </div>
               </div>
+              <div className="span-danger">
+                  {frm.errors.password ? <span className="text-danger text-err">{frm.errors.password}</span>: ''}
+                </div>
             </div>
           </div>
         </div>
@@ -98,7 +85,6 @@ export default function Login(props) {
               </button>
             )}
             callback={responseFacebook} />
-            {/*  */}
         </div>
         
       </div>

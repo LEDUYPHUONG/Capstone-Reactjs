@@ -210,7 +210,6 @@ export default function Carts() {
           quantity: item.quantityOrder,
         };
       });
-      console.log(orderDetailIds);
       dispatch(
         orderProducts({
           orderDetail: orderDetailIds,

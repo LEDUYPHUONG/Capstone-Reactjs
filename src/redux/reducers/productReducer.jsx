@@ -44,7 +44,6 @@ const productReducer = createSlice({
       //     state.infoOrder[].quantity =
       // }
       // state.infoOrder[].productId = action.payload
-      console.log(12345);
     },
   },
 });
@@ -96,7 +95,6 @@ export const orderProducts = (useParams) => {
         orderDetail: useParams.orderDetail,
         email: useParams.email,
       });
-      console.log(response);
       if (response) {
         // xóa localstograge và show thong bao sau khi thanh cong
         alert(response.data.content);

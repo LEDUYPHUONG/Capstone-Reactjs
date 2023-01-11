@@ -6,7 +6,7 @@
         .container{
             .row{
                 padding: 53px 0 36px;
-                
+                margin: 0;
                 .col-4{
                     .footer-title{
                         @include text($f-fam:$f-family-primary,$f-styt:normal,$f-wei:$f-weight-b,
